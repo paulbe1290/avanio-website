@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+/*
+ * Avanio-CI als Tailwind-Theme (Tailwind v4, CSS-first).
+ * Eigene Palette, bewusst ohne Becker-Blau: Petrolgrün als Markenfarbe,
+ * fast schwarze Tinte für Text, helle Flächen, Limette als Akzent
+ * auf dunklen Flächen. Hell, hoher Kontrast, barrierearm.
+ *
+ * Schriftpaar: Space Grotesk (markante Grotesk für Headlines)
+ * und Inter (ruhige Grotesk für Fließtext), lokal via next/font.
+ */
+@theme {
+  /* Schriften: Variablen werden von next/font im Root-Layout gesetzt */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), var(--font-inter),
+    ui-sans-serif, system-ui, sans-serif;
+
+  /* Text */
+  --color-ink: #17211f; /* Haupttext, fast schwarz mit grünem Unterton */
+  --color-smoke: #4d5b57; /* Sekundärtext, erfüllt AA auf Weiß */
+
+  /* Flächen und Linien */
+  --color-mist: #f2f7f5; /* Helle Sektionsfläche */
+  --color-line: #dce7e3; /* Rahmen und Trenner */
+
+  /* Markenfarbe */
+  --color-primary: #0c6b58; /* Petrolgrün, AA-Kontrast auf Weiß */
+  --color-primary-dark: #084a3d; /* Hover und dunkle Flächen */
+  --color-primary-soft: #e3f1ec; /* Tints für Badges und Hintergründe */
+
+  /* Akzent: nur auf dunklen Flächen einsetzen (Kontrast) */
+  --color-accent: #c9f26d;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display tracking-tight;
+  }
+
+  ::selection {
+    background-color: var(--color-primary-soft);
+    color: var(--color-primary-dark);
+  }
+
+  /* Sichtbarer Fokusring für Tastaturnutzung (Barrierearmut) */
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
