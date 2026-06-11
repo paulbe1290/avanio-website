@@ -88,6 +88,37 @@ export function webSiteSchema() {
   };
 }
 
+/** Service-Schema für Leistungs- und Branchen-Seiten. */
+export function serviceSchema(args: {
+  name: string;
+  description: string;
+  path: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: args.name,
+    description: args.description,
+    url: absoluteUrl(args.path),
+    serviceType: args.name,
+    provider: { "@id": `${SITE_URL}/#organization` },
+    areaServed: { "@type": "Country", name: "Deutschland" },
+  };
+}
+
+/** FAQPage-Schema aus einer Frage-Antwort-Liste. */
+export function faqPageSchema(faq: { frage: string; antwort: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((item) => ({
+      "@type": "Question",
+      name: item.frage,
+      acceptedAnswer: { "@type": "Answer", text: item.antwort },
+    })),
+  };
+}
+
 /** BreadcrumbList-Schema aus einer Liste von (Name, Pfad)-Paaren. */
 export function breadcrumbSchema(items: { name: string; path: string }[]) {
   return {
