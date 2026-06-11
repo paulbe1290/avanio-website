@@ -55,8 +55,8 @@ function Portrait() {
       <Image
         src="/paul-becker.jpg"
         alt="Paul Becker, Gründer von Avanio"
-        width={520}
-        height={680}
+        width={1023}
+        height={1537}
         priority
         className="h-full w-full rounded-3xl object-cover"
       />
