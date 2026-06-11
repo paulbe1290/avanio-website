@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 
 import { branchen } from "@/data/branchen";
 import { cities, cityIstIndexierbar } from "@/data/cities";
+import { artikel } from "@/data/ratgeber";
 import { services } from "@/data/services";
 import { standorte, standortIstIndexierbar } from "@/data/standorte";
 import { absoluteUrl } from "@/lib/seo";
@@ -21,6 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/ki-agentur",
     "/branchen",
     "/standorte",
+    "/ratgeber",
     "/referenzen",
     "/ueber-uns",
     "/kontakt",
@@ -58,6 +60,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     eintraege.push({
       url: absoluteUrl(`/standorte/${standort.slug}`),
       lastModified,
+    });
+  }
+
+  for (const beitrag of artikel) {
+    eintraege.push({
+      url: absoluteUrl(`/ratgeber/${beitrag.slug}`),
+      lastModified: new Date(beitrag.datum),
     });
   }
 

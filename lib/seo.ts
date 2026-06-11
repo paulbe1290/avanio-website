@@ -146,6 +146,26 @@ export function faqPageSchema(faq: { frage: string; antwort: string }[]) {
   };
 }
 
+/** BlogPosting-Schema für Ratgeber-Artikel. */
+export function blogPostingSchema(args: {
+  titel: string;
+  beschreibung: string;
+  path: string;
+  datum: string; // ISO-Datum
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: args.titel,
+    description: args.beschreibung,
+    url: absoluteUrl(args.path),
+    datePublished: args.datum,
+    inLanguage: "de-DE",
+    author: { "@id": `${SITE_URL}/#organization` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+  };
+}
+
 /** BreadcrumbList-Schema aus einer Liste von (Name, Pfad)-Paaren. */
 export function breadcrumbSchema(items: { name: string; path: string }[]) {
   return {

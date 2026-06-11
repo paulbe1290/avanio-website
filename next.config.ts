@@ -1,3 +1,4 @@
+import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -5,6 +6,11 @@ const nextConfig: NextConfig = {
   // Kein Output-Override noetig: Next rendert App-Router-Seiten ohne
   // dynamische APIs automatisch statisch.
   reactStrictMode: true,
+  // MDX wird nicht als eigene Route genutzt, sondern als importierte
+  // Komponente in /ratgeber/[slug]; die Extension bleibt trotzdem erlaubt.
+  pageExtensions: ["ts", "tsx", "mdx"],
 };
 
-export default nextConfig;
+const withMDX = createMDX({});
+
+export default withMDX(nextConfig);
