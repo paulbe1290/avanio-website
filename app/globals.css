@@ -81,9 +81,57 @@
   animation: float 6s ease-in-out 3s infinite;
 }
 
+/* Dauerhafter Schimmer-Lauf über Diagramm-Balken */
+@keyframes schimmer {
+  0% {
+    transform: translateX(-120%);
+  }
+  60%,
+  100% {
+    transform: translateX(420%);
+  }
+}
+
+.chart-schimmer {
+  position: absolute;
+  inset: 0;
+  width: 35%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.35),
+    transparent
+  );
+  animation: schimmer 2.8s ease-in-out infinite;
+}
+
+/* Pulsierender Endpunkt im Linien-Diagramm */
+@keyframes chart-puls {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  80% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+.chart-puls {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: chart-puls 2.2s ease-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-float,
-  .animate-float-verzoegert {
+  .animate-float-verzoegert,
+  .chart-schimmer,
+  .chart-puls {
     animation: none;
   }
 }

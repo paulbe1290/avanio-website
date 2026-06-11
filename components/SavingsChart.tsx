@@ -14,10 +14,53 @@ type SavingsChartProps = {
   rows: ChartRow[];
 };
 
+function Balken({
+  wert,
+  maximum,
+  aktiv,
+  verzoegerung,
+  beschriftung,
+  variante,
+}: {
+  wert: number;
+  maximum: number;
+  aktiv: boolean;
+  verzoegerung: number;
+  beschriftung: string;
+  variante: "vorher" | "nachher";
+}) {
+  return (
+    <div className="group flex items-center gap-3">
+      <span className="w-14 shrink-0 text-xs font-medium text-smoke">
+        {beschriftung}
+      </span>
+      <div className="h-6 flex-1 overflow-hidden rounded-full bg-mist">
+        <div
+          className={`relative h-full overflow-hidden rounded-full transition-all duration-1000 ease-out group-hover:brightness-110 ${
+            variante === "nachher" ? "bg-primary" : "bg-smoke/70"
+          }`}
+          style={{
+            width: aktiv ? `${(wert / maximum) * 100}%` : "0%",
+            transitionDelay: `${verzoegerung}ms`,
+          }}
+        >
+          {/* Dauerhafter Schimmer-Lauf über den Balken */}
+          <span aria-hidden="true" className="chart-schimmer" />
+        </div>
+      </div>
+      {/* Wert bewusst außerhalb des Balkens, damit nichts abgeschnitten wird */}
+      <span className="w-16 shrink-0 text-right text-sm font-bold text-ink">
+        {wert} Std.
+      </span>
+    </div>
+  );
+}
+
 /**
  * Animiertes Vorher-Nachher-Balkendiagramm: Stunden pro Monat, die ein
  * Prozess ohne und mit Automatisierung bindet. Die Balken wachsen beim
- * Scrollen in den Viewport; prefers-reduced-motion wird respektiert.
+ * Scrollen in den Viewport, schimmern dauerhaft dezent und reagieren auf
+ * Hover; prefers-reduced-motion wird respektiert.
  */
 export default function SavingsChart({ rows }: SavingsChartProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -51,7 +94,7 @@ export default function SavingsChart({ rows }: SavingsChartProps) {
         const ersparnis = row.vorher - row.nachher;
         return (
           <div key={row.label}>
-            <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
               <p className="font-display text-base font-bold text-ink">
                 {row.label}
               </p>
@@ -60,42 +103,22 @@ export default function SavingsChart({ rows }: SavingsChartProps) {
               </p>
             </div>
             <div className="mt-3 space-y-2">
-              <div className="flex items-center gap-3">
-                <span className="w-16 shrink-0 text-xs font-medium text-smoke">
-                  vorher
-                </span>
-                <div className="h-7 flex-1 overflow-hidden rounded-full bg-mist">
-                  <div
-                    className="flex h-full items-center justify-end rounded-full bg-smoke/70 pr-3 transition-all duration-1000 ease-out"
-                    style={{
-                      width: aktiv ? `${(row.vorher / maximum) * 100}%` : "0%",
-                      transitionDelay: `${index * 200}ms`,
-                    }}
-                  >
-                    <span className="text-xs font-bold text-white">
-                      {row.vorher} Std.
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="w-16 shrink-0 text-xs font-medium text-smoke">
-                  nachher
-                </span>
-                <div className="h-7 flex-1 overflow-hidden rounded-full bg-mist">
-                  <div
-                    className="flex h-full items-center justify-end rounded-full bg-primary pr-3 transition-all duration-1000 ease-out"
-                    style={{
-                      width: aktiv ? `${(row.nachher / maximum) * 100}%` : "0%",
-                      transitionDelay: `${index * 200 + 250}ms`,
-                    }}
-                  >
-                    <span className="text-xs font-bold text-white">
-                      {row.nachher} Std.
-                    </span>
-                  </div>
-                </div>
-              </div>
+              <Balken
+                wert={row.vorher}
+                maximum={maximum}
+                aktiv={aktiv}
+                verzoegerung={index * 200}
+                beschriftung="vorher"
+                variante="vorher"
+              />
+              <Balken
+                wert={row.nachher}
+                maximum={maximum}
+                aktiv={aktiv}
+                verzoegerung={index * 200 + 250}
+                beschriftung="nachher"
+                variante="nachher"
+              />
             </div>
           </div>
         );
