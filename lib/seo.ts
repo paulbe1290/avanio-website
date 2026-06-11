@@ -106,6 +106,29 @@ export function serviceSchema(args: {
   };
 }
 
+/** ProfessionalService-Schema für lokale Stadt-Seiten (Spur 1). */
+export function professionalServiceSchema(args: {
+  cityName: string;
+  path: string;
+  description: string;
+  geo: { lat: number; lng: number };
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: `${SITE_NAME}: KI-Agentur für ${args.cityName}`,
+    url: absoluteUrl(args.path),
+    description: args.description,
+    areaServed: { "@type": "City", name: args.cityName },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: args.geo.lat,
+      longitude: args.geo.lng,
+    },
+    parentOrganization: { "@id": `${SITE_URL}/#organization` },
+  };
+}
+
 /** FAQPage-Schema aus einer Frage-Antwort-Liste. */
 export function faqPageSchema(faq: { frage: string; antwort: string }[]) {
   return {
