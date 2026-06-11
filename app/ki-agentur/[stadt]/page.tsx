@@ -9,7 +9,12 @@ import LocalScenario from "@/components/LocalScenario";
 import RegionList from "@/components/RegionList";
 import SchemaJsonLd from "@/components/SchemaJsonLd";
 import ServiceBlock from "@/components/ServiceBlock";
-import { cities, getCity, serviceReihenfolge } from "@/data/cities";
+import {
+  cities,
+  cityIstIndexierbar,
+  getCity,
+  serviceReihenfolge,
+} from "@/data/cities";
 import { getService } from "@/data/services";
 import { buildMetadata, professionalServiceSchema } from "@/lib/seo";
 
@@ -21,19 +26,6 @@ export function generateStaticParams() {
   return cities.map((city) => ({ stadt: city.slug }));
 }
 
-/**
- * Doorway-Schutz: Eine Stadt-Seite wird nur indexiert, wenn alle
- * Unique-Pflichtfelder gefüllt sind und das "indexierbar"-Flag gesetzt ist.
- */
-function istIndexierbar(city: (typeof cities)[number]): boolean {
-  return (
-    city.indexierbar &&
-    city.lokalerHook.trim().length > 0 &&
-    city.beispielSzenario.trim().length > 0 &&
-    city.faqLokal.length >= 2
-  );
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { stadt } = await params;
   const city = getCity(stadt);
@@ -43,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `KI-Agentur ${city.name}: Automatisierung für Unternehmen vor Ort`,
     description: `Avanio unterstützt Unternehmen in ${city.name} (${city.landkreis}) mit Prozessautomatisierung, KI-Telefonassistenten und KI-Chatbots. Jetzt kostenloses Erstgespräch vereinbaren.`,
     path: `/ki-agentur/${city.slug}`,
-    noindex: !istIndexierbar(city),
+    noindex: !cityIstIndexierbar(city),
   });
 }
 

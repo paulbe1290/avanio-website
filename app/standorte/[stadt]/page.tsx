@@ -9,7 +9,11 @@ import LocalScenario from "@/components/LocalScenario";
 import SchemaJsonLd from "@/components/SchemaJsonLd";
 import ServiceBlock from "@/components/ServiceBlock";
 import { services } from "@/data/services";
-import { getStandort, standorte } from "@/data/standorte";
+import {
+  getStandort,
+  standorte,
+  standortIstIndexierbar,
+} from "@/data/standorte";
 import { buildMetadata, serviceSchema } from "@/lib/seo";
 
 type Props = {
@@ -18,19 +22,6 @@ type Props = {
 
 export function generateStaticParams() {
   return standorte.map((standort) => ({ stadt: standort.slug }));
-}
-
-/**
- * Doorway-Schutz: nur indexieren, wenn die Unique-Felder gefüllt sind
- * und das Flag gesetzt ist.
- */
-function istIndexierbar(standort: (typeof standorte)[number]): boolean {
-  return (
-    standort.indexierbar &&
-    standort.hook.trim().length > 0 &&
-    standort.beispielSzenario.trim().length > 0 &&
-    standort.faq.length >= 2
-  );
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -42,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `KI für Unternehmen in ${standort.name}: remote umgesetzt`,
     description: `Prozessautomatisierung, KI-Telefonassistent und KI-Chatbot für Unternehmen in ${standort.name} (${standort.bundesland}). Avanio betreut Sie vollständig remote, bundesweit aus Magdeburg.`,
     path: `/standorte/${standort.slug}`,
-    noindex: !istIndexierbar(standort),
+    noindex: !standortIstIndexierbar(standort),
   });
 }
 

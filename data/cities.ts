@@ -346,6 +346,21 @@ export function getCity(slug: string): City | undefined {
 }
 
 /**
+ * Doorway-Schutz: Eine Stadt-Seite darf nur dann auf index stehen und in
+ * die Sitemap, wenn das Flag gesetzt ist und alle Unique-Pflichtfelder
+ * gefüllt sind. Wird vom Stadt-Template (noindex) und von app/sitemap.ts
+ * gemeinsam genutzt.
+ */
+export function cityIstIndexierbar(city: City): boolean {
+  return (
+    city.indexierbar &&
+    city.lokalerHook.trim().length > 0 &&
+    city.beispielSzenario.trim().length > 0 &&
+    city.faqLokal.length >= 2
+  );
+}
+
+/**
  * Leitet aus der lokalen Branchenstruktur die Reihenfolge der
  * Leistungsblöcke ab (Doorway-Schutz: Reihenfolge variiert je Stadt
  * nach lokalem Schwerpunkt). Liefert Service-Slugs, stärkster zuerst.

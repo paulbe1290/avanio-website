@@ -209,3 +209,18 @@ export const standorte: Standort[] = [
 export function getStandort(slug: string): Standort | undefined {
   return standorte.find((standort) => standort.slug === slug);
 }
+
+/**
+ * Doorway-Schutz: Eine Standort-Seite darf nur dann auf index stehen und
+ * in die Sitemap, wenn das Flag gesetzt ist und alle Unique-Pflichtfelder
+ * gefüllt sind. Wird vom Standort-Template (noindex) und von
+ * app/sitemap.ts gemeinsam genutzt.
+ */
+export function standortIstIndexierbar(standort: Standort): boolean {
+  return (
+    standort.indexierbar &&
+    standort.hook.trim().length > 0 &&
+    standort.beispielSzenario.trim().length > 0 &&
+    standort.faq.length >= 2
+  );
+}

@@ -1,0 +1,17 @@
+import type { MetadataRoute } from "next";
+
+import { absoluteUrl } from "@/lib/seo";
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+        // Die Lead-API ist kein Crawl-Ziel.
+        disallow: ["/api/"],
+      },
+    ],
+    sitemap: absoluteUrl("/sitemap.xml"),
+  };
+}
