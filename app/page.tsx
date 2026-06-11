@@ -6,6 +6,7 @@ import { join } from "path";
 
 import CountUp from "@/components/CountUp";
 import CTASection from "@/components/CTASection";
+import GrowthChart from "@/components/GrowthChart";
 import Reveal from "@/components/Reveal";
 import SavingsChart from "@/components/SavingsChart";
 import ServiceCard from "@/components/ServiceCard";
@@ -126,18 +127,18 @@ export default function HomePage() {
               <Portrait />
               <div className="animate-float absolute -left-6 top-10 rounded-2xl border border-line bg-white px-4 py-3 shadow-lg">
                 <p className="text-xs font-semibold text-smoke">
-                  Erreichbarkeit
+                  Ihr KI-Assistent
                 </p>
                 <p className="font-display text-lg font-bold text-ink">
-                  24/7, auch am Wochenende
+                  nimmt Anrufe 24/7 an
                 </p>
               </div>
               <div className="animate-float-verzoegert absolute -right-4 bottom-12 rounded-2xl border border-line bg-white px-4 py-3 shadow-lg">
                 <p className="text-xs font-semibold text-smoke">
-                  Termine landen
+                  Automatisch gebucht
                 </p>
                 <p className="font-display text-lg font-bold text-ink">
-                  direkt im Kalender
+                  Termine direkt im Kalender
                 </p>
               </div>
             </div>
@@ -227,6 +228,32 @@ export default function HomePage() {
             </div>
           </Reveal>
         </div>
+
+        <Reveal delay={150} className="mt-12">
+          <div className="rounded-3xl border border-line bg-white p-6 sm:p-10">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-widest text-primary">
+                  Aufs Jahr gerechnet
+                </p>
+                <h3 className="mt-2 font-display text-2xl font-bold">
+                  Kumulierte Zeitersparnis beim schrittweisen Ausbau
+                </h3>
+              </div>
+              <p className="font-display text-3xl font-bold text-primary">
+                <CountUp value={293} suffix=" Std." duration={2000} />
+              </p>
+            </div>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-smoke">
+              Rechenbeispiel: Start mit einem Workflow (10 Std./Monat), Ausbau
+              auf drei Workflows bis Monat 8. Fahren Sie mit der Maus über die
+              Kurve, um die Werte je Monat zu sehen.
+            </p>
+            <div className="mt-8">
+              <GrowthChart />
+            </div>
+          </div>
+        </Reveal>
       </section>
 
       {/* Leistungen */}
