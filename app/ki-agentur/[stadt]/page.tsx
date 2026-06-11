@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import CityHero from "@/components/CityHero";
 import CTASection from "@/components/CTASection";
 import FAQ from "@/components/FAQ";
 import LocalScenario from "@/components/LocalScenario";
+import RegionList from "@/components/RegionList";
 import SchemaJsonLd from "@/components/SchemaJsonLd";
 import ServiceBlock from "@/components/ServiceBlock";
 import { cities, getCity, serviceReihenfolge } from "@/data/cities";
@@ -54,6 +56,11 @@ export default async function StadtPage({ params }: Props) {
   const leistungen = serviceReihenfolge(city)
     .map((slug) => getService(slug))
     .filter((service) => service !== undefined);
+
+  // Interne Verlinkung: Nachbarstädte aus den hinterlegten Slugs auflösen.
+  const nachbarn = city.nachbarstaedte
+    .map((slug) => getCity(slug))
+    .filter((nachbar) => nachbar !== undefined);
 
   return (
     <>
@@ -112,6 +119,31 @@ export default async function StadtPage({ params }: Props) {
           heading={`Häufige Fragen aus ${city.name}`}
         />
       </div>
+
+      {nachbarn.length > 0 && (
+        <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
+          <h2 className="text-2xl font-bold">
+            Auch in der Nähe von {city.name}
+          </h2>
+          <p className="mt-3 max-w-2xl leading-relaxed text-smoke">
+            Wir betreuen Unternehmen in der gesamten Region. Diese Standorte
+            liegen in Ihrer Nachbarschaft:
+          </p>
+          <div className="mt-6">
+            <RegionList cities={nachbarn} />
+          </div>
+          <p className="mt-6 text-sm text-smoke">
+            Alle Städte und das gesamte Einzugsgebiet finden Sie auf der{" "}
+            <Link
+              href="/ki-agentur"
+              className="font-semibold text-primary hover:text-primary-dark"
+            >
+              Übersicht der Region Magdeburg
+            </Link>
+            .
+          </p>
+        </section>
+      )}
 
       <CTASection
         heading={`Bereit für den nächsten Schritt in ${city.name}?`}
