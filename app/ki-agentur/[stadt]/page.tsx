@@ -97,7 +97,7 @@ export default async function StadtPage({ params }: Props) {
 
       <div className="bg-mist">
         <LocalScenario
-          cityName={city.name}
+          heading={`So rechnet sich KI in ${city.name}`}
           szenario={city.beispielSzenario}
         />
       </div>

@@ -1,19 +1,19 @@
 type LocalScenarioProps = {
-  cityName: string;
+  heading: string;
   szenario: string;
 };
 
 /**
- * Hervorgehobenes, durchgerechnetes Beispiel-Szenario einer Stadt-
- * oder Standort-Seite.
+ * Hervorgehobenes, durchgerechnetes Beispiel-Szenario für Stadt-,
+ * Standort- und Branchen-Seiten.
  */
 export default function LocalScenario({
-  cityName,
+  heading,
   szenario,
 }: LocalScenarioProps) {
   return (
     <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
-      <h2 className="text-3xl font-bold">So rechnet sich KI in {cityName}</h2>
+      <h2 className="text-3xl font-bold">{heading}</h2>
       <div className="mt-6 rounded-2xl border border-primary-soft bg-primary-soft/60 p-6 sm:p-8">
         <p className="leading-relaxed text-ink">{szenario}</p>
       </div>

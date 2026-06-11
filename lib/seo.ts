@@ -93,6 +93,8 @@ export function serviceSchema(args: {
   name: string;
   description: string;
   path: string;
+  /** Optional: bediente Stadt statt "Deutschland" (Spur-2-Standorte). */
+  areaServedCity?: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -102,7 +104,9 @@ export function serviceSchema(args: {
     url: absoluteUrl(args.path),
     serviceType: args.name,
     provider: { "@id": `${SITE_URL}/#organization` },
-    areaServed: { "@type": "Country", name: "Deutschland" },
+    areaServed: args.areaServedCity
+      ? { "@type": "City", name: args.areaServedCity }
+      : { "@type": "Country", name: "Deutschland" },
   };
 }
 
