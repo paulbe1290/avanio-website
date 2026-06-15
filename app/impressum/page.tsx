@@ -9,11 +9,6 @@ export const metadata: Metadata = buildMetadata({
   path: "/impressum",
 });
 
-/*
- * TODO: Alle Platzhalter in eckigen Klammern durch die echten Angaben
- * ersetzen, bevor die Seite live geht (Name, Rechtsform, Anschrift,
- * Kontaktdaten, ggf. USt-IdNr.). Keine Angaben erfinden.
- */
 export default function ImpressumPage() {
   return (
     <section className="mx-auto max-w-3xl px-4 py-14 sm:px-6 sm:py-20">
@@ -24,31 +19,34 @@ export default function ImpressumPage() {
         <div>
           <h2 className="text-xl font-bold text-ink">Angaben gemäß § 5 DDG</h2>
           <p className="mt-3">
-            [Vorname Nachname bzw. Firmierung]
+            Paul Becker
             <br />
-            Avanio [Rechtsformzusatz, falls vorhanden]
+            Avanio
             <br />
-            [Straße und Hausnummer]
+            Klein Möringer Dorfstraße 49
             <br />
-            [PLZ Ort]
+            39576 Stendal
           </p>
         </div>
 
         <div>
           <h2 className="text-xl font-bold text-ink">Kontakt</h2>
           <p className="mt-3">
-            Telefon: [Telefonnummer]
+            Telefon:{" "}
+            <a
+              href="tel:+4915511526216"
+              className="font-semibold text-primary hover:text-primary-dark"
+            >
+              +49 15511526216
+            </a>
             <br />
-            E-Mail: [E-Mail-Adresse]
-          </p>
-        </div>
-
-        <div>
-          <h2 className="text-xl font-bold text-ink">Umsatzsteuer-ID</h2>
-          <p className="mt-3">
-            Umsatzsteuer-Identifikationsnummer gemäß § 27a
-            Umsatzsteuergesetz: [USt-IdNr., falls vorhanden, sonst Abschnitt
-            entfernen]
+            E-Mail:{" "}
+            <a
+              href="mailto:hallo@beckerwebsolutions.de"
+              className="font-semibold text-primary hover:text-primary-dark"
+            >
+              hallo@beckerwebsolutions.de
+            </a>
           </p>
         </div>
 
@@ -57,9 +55,11 @@ export default function ImpressumPage() {
             Verantwortlich für den Inhalt gemäß § 18 Abs. 2 MStV
           </h2>
           <p className="mt-3">
-            [Vorname Nachname]
+            Paul Becker
             <br />
-            [Anschrift wie oben]
+            Klein Möringer Dorfstraße 49
+            <br />
+            39576 Stendal
           </p>
         </div>
 
