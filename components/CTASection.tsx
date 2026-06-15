@@ -19,12 +19,20 @@ export default function CTASection({
         <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-primary-soft">
           {text}
         </p>
-        <Link
-          href="/kontakt"
-          className="mt-8 inline-block rounded-full bg-accent px-8 py-3 text-base font-semibold text-ink transition-opacity hover:opacity-90"
-        >
-          Kostenloses Erstgespräch vereinbaren
-        </Link>
+        <div className="mt-8 flex flex-wrap justify-center gap-4">
+          <Link
+            href="/termin"
+            className="inline-block rounded-full bg-accent px-8 py-3 text-base font-semibold text-ink transition-opacity hover:opacity-90"
+          >
+            Kostenloses Erstgespräch buchen
+          </Link>
+          <Link
+            href="/kontakt"
+            className="inline-block rounded-full border border-white/30 px-8 py-3 text-base font-semibold text-white transition-colors hover:bg-white/10"
+          >
+            Lieber schreiben
+          </Link>
+        </div>
       </div>
     </section>
   );

@@ -107,10 +107,10 @@ export default function HomePage() {
             <Reveal delay={360}>
               <div className="mt-9 flex flex-wrap gap-4">
                 <Link
-                  href="/kontakt"
+                  href="/termin"
                   className="rounded-full bg-primary px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-primary/25 transition-all hover:-translate-y-0.5 hover:bg-primary-dark"
                 >
-                  Kostenloses Erstgespräch
+                  Kostenloses Erstgespräch buchen
                 </Link>
                 <Link
                   href="/leistungen"

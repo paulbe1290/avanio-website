@@ -40,6 +40,7 @@ const columns: { heading: string; links: { href: string; label: string }[] }[] =
         { href: "/ueber-uns", label: "Über uns" },
         { href: "/referenzen", label: "Referenzen" },
         { href: "/ratgeber", label: "Ratgeber" },
+        { href: "/termin", label: "Termin buchen" },
         { href: "/kontakt", label: "Kontakt" },
       ],
     },
