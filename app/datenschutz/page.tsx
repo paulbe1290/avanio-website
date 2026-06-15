@@ -11,9 +11,8 @@ export const metadata: Metadata = buildMetadata({
 });
 
 /*
- * TODO: Entwurf vor dem Livegang juristisch prüfen lassen und die
- * Platzhalter in eckigen Klammern (Verantwortlicher, Kontaktdaten)
- * durch echte Angaben ersetzen.
+ * Hinweis: Die Angaben sind vollständig befüllt. Eine abschließende
+ * juristische Prüfung vor dem Livegang bleibt empfehlenswert.
  */
 export default function DatenschutzPage() {
   return (
@@ -27,13 +26,19 @@ export default function DatenschutzPage() {
           <p className="mt-3">
             Verantwortlich für die Datenverarbeitung auf dieser Website ist:
             <br />
-            [Vorname Nachname bzw. Firmierung]
+            Paul Becker (Avanio)
             <br />
-            [Straße und Hausnummer]
+            Klein Möringer Dorfstraße 49
             <br />
-            [PLZ Ort]
+            39576 Stendal
             <br />
-            E-Mail: [E-Mail-Adresse]
+            E-Mail:{" "}
+            <a
+              href="mailto:hallo@beckerwebsolutions.de"
+              className="font-semibold text-primary hover:text-primary-dark"
+            >
+              hallo@beckerwebsolutions.de
+            </a>
           </p>
         </div>
 
@@ -88,8 +93,28 @@ export default function DatenschutzPage() {
         </div>
 
         <div>
+          <h2 className="text-xl font-bold text-ink">5. Cookies</h2>
+          <p className="mt-3">
+            Wir verzichten auf Tracking-, Analyse- und Marketing-Cookies.
+            Gesetzt wird ausschließlich ein technisch notwendiges Cookie, das
+            Ihre Entscheidung im Cookie-Hinweis speichert (Name:
+            {" "}
+            <code className="rounded bg-mist px-1 py-0.5 text-sm">
+              avanio-cookie-consent
+            </code>
+            ), damit der Hinweis bei weiteren Besuchen nicht erneut erscheint.
+            Dieses Cookie enthält nur den Wert Ihrer Auswahl, keine
+            personenbezogenen Daten, und ist rund sechs Monate gültig.
+            Rechtsgrundlage ist § 25 Abs. 2 Nr. 2 TDDDG, da das Cookie für den
+            von Ihnen gewünschten Betrieb unbedingt erforderlich ist. Sie
+            können gesetzte Cookies jederzeit in Ihren Browser-Einstellungen
+            löschen.
+          </p>
+        </div>
+
+        <div>
           <h2 className="text-xl font-bold text-ink">
-            5. Ihre Rechte als betroffene Person
+            6. Ihre Rechte als betroffene Person
           </h2>
           <p className="mt-3">
             Sie haben gegenüber uns folgende Rechte hinsichtlich der Sie
@@ -108,11 +133,11 @@ export default function DatenschutzPage() {
 
         <div>
           <h2 className="text-xl font-bold text-ink">
-            6. Aktualität dieser Erklärung
+            7. Aktualität dieser Erklärung
           </h2>
           <p className="mt-3">
             Diese Datenschutzerklärung passen wir an, wenn sich die Website
-            oder die Rechtslage ändert. Stand: [Monat Jahr eintragen].
+            oder die Rechtslage ändert. Stand: Juni 2026.
           </p>
         </div>
       </div>
