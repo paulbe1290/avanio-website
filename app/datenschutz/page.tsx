@@ -52,7 +52,9 @@ export default function DatenschutzPage() {
             Analysedienste ein und laden Schriften von unserem eigenen Server
             statt von Drittanbietern. Personenbezogene Daten verarbeiten wir
             nur, wenn Sie sie uns aktiv mitteilen, etwa über das
-            Kontaktformular.
+            Kontaktformular. Der einzige externe Inhalt, der Buchungskalender
+            von Cal.com, wird ausschließlich nach Ihrem aktiven Klick geladen
+            (siehe Abschnitt 6).
           </p>
         </div>
 
@@ -114,7 +116,28 @@ export default function DatenschutzPage() {
 
         <div>
           <h2 className="text-xl font-bold text-ink">
-            6. Ihre Rechte als betroffene Person
+            6. Terminbuchung über Cal.com
+          </h2>
+          <p className="mt-3">
+            Für die Buchung von Erstgesprächen binden wir den Dienst Cal.com
+            (EU-Instanz, erreichbar über app.cal.eu) ein. Der Buchungskalender
+            wird aus Datenschutzgründen nicht automatisch geladen, sondern
+            erst, wenn Sie ihn durch einen Klick aktiv öffnen. Dabei wird eine
+            Verbindung zu den Servern von Cal.com hergestellt und es können
+            technisch notwendige Daten (zum Beispiel Ihre IP-Adresse sowie die
+            von Ihnen für die Buchung angegebenen Daten wie Name, E-Mail-Adresse
+            und Terminwunsch) verarbeitet werden. Rechtsgrundlage für das Laden
+            des Kalenders ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO),
+            die Sie mit dem Öffnen erteilen, sowie Art. 6 Abs. 1 lit. b DSGVO
+            für die Durchführung der Terminvereinbarung. Mit dem Anbieter
+            besteht ein Auftragsverarbeitungsvertrag. Einzelheiten finden Sie in
+            der Datenschutzerklärung von Cal.com.
+          </p>
+        </div>
+
+        <div>
+          <h2 className="text-xl font-bold text-ink">
+            7. Ihre Rechte als betroffene Person
           </h2>
           <p className="mt-3">
             Sie haben gegenüber uns folgende Rechte hinsichtlich der Sie
@@ -133,7 +156,7 @@ export default function DatenschutzPage() {
 
         <div>
           <h2 className="text-xl font-bold text-ink">
-            7. Aktualität dieser Erklärung
+            8. Aktualität dieser Erklärung
           </h2>
           <p className="mt-3">
             Diese Datenschutzerklärung passen wir an, wenn sich die Website

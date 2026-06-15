@@ -26,6 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/referenzen",
     "/ueber-uns",
     "/kontakt",
+    "/termin",
     "/impressum",
     "/datenschutz",
   ];

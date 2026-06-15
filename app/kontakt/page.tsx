@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import Breadcrumbs from "@/components/Breadcrumbs";
 import LeadForm from "@/components/LeadForm";
@@ -53,7 +54,23 @@ export default function KontaktPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold">So geht es weiter</h2>
+            <div className="rounded-2xl border border-primary-soft bg-primary-soft/50 p-6">
+              <h2 className="font-display text-xl font-bold text-primary-dark">
+                Lieber direkt einen Termin?
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-ink">
+                Suchen Sie sich ohne Umweg einen freien Termin für Ihr
+                kostenloses Erstgespräch aus.
+              </p>
+              <Link
+                href="/termin"
+                className="mt-4 inline-block rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
+              >
+                Termin buchen
+              </Link>
+            </div>
+
+            <h2 className="mt-10 text-2xl font-bold">So geht es weiter</h2>
             <ol className="mt-6 space-y-6">
               {ablauf.map((schritt, index) => (
                 <li key={schritt.titel} className="flex gap-4">
@@ -76,12 +93,22 @@ export default function KontaktPage() {
               <h3 className="font-display text-lg font-bold">
                 Lieber direkt schreiben oder anrufen?
               </h3>
-              {/* TODO: Finale Kontaktdaten (E-Mail, Telefonnummer) eintragen,
-                  sobald sie feststehen. */}
               <p className="mt-2 text-sm leading-relaxed text-smoke">
-                E-Mail: [E-Mail-Adresse folgt]
+                E-Mail:{" "}
+                <a
+                  href="mailto:hallo@beckerwebsolutions.de"
+                  className="font-semibold text-primary hover:text-primary-dark"
+                >
+                  hallo@beckerwebsolutions.de
+                </a>
                 <br />
-                Telefon: [Telefonnummer folgt]
+                Telefon:{" "}
+                <a
+                  href="tel:+4915511526216"
+                  className="font-semibold text-primary hover:text-primary-dark"
+                >
+                  +49 15511526216
+                </a>
               </p>
             </div>
           </div>

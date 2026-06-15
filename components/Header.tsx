@@ -49,10 +49,10 @@ export default function Header() {
 
         <div className="flex items-center gap-3">
           <Link
-            href="/kontakt"
+            href="/termin"
             className="hidden rounded-full bg-primary px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-primary-dark lg:inline-block"
           >
-            Kontakt aufnehmen
+            Termin buchen
           </Link>
 
           {/* Mobiler Menü-Button */}
@@ -105,10 +105,19 @@ export default function Header() {
             <li>
               <Link
                 href="/kontakt"
-                className="mt-2 block rounded-full bg-primary px-5 py-2.5 text-center text-base font-semibold text-white hover:bg-primary-dark"
+                className="mt-2 block rounded-md px-3 py-2 text-base font-medium text-ink hover:bg-mist"
                 onClick={() => setMenuOpen(false)}
               >
-                Kontakt aufnehmen
+                Kontakt
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/termin"
+                className="mt-1 block rounded-full bg-primary px-5 py-2.5 text-center text-base font-semibold text-white hover:bg-primary-dark"
+                onClick={() => setMenuOpen(false)}
+              >
+                Termin buchen
               </Link>
             </li>
           </ul>
