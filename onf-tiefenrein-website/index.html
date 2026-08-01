@@ -1,0 +1,1642 @@
+<!doctype html>
+<!-- ONF Tiefenrein Website v6 -->
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>ONF Tiefenrein – Pflasterreinigung &amp; Gartenpflege | Sauber. Frisch. Wie neu.</title>
+<meta name="description" content="ONF Tiefenrein reinigt Pflaster, Terrassen und Auffahrten mit professioneller Tiefenreinigung und pflegt Ihren Garten – inkl. kostenloser Besichtigung und Beratung vor Ort. Tel. 01520 5845274">
+<meta property="og:title" content="ONF Tiefenrein – Sauber. Frisch. Wie neu.">
+<meta property="og:description" content="Pflasterreinigung, Heckenschnitt & Gartenpflege mit kostenloser Besichtigung. Faire Preise, gründliche Arbeit.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0D2F23">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============ ONF Tiefenrein – Design-Tokens ============ */
+:root{
+  --tanne:   #0D2F23;   /* tiefes Tannengrün */
+  --tanne-2: #123B2C;   /* Karten auf dunklem Grund */
+  --moos:    #1E7A4C;   /* Aktionsgrün */
+  --limette: #C9F16A;   /* Signaturakzent (frisch) */
+  --papier:  #F3F5EE;   /* gewaschenes Papierweiß */
+  --weiss:   #FFFFFF;
+  --tinte:   #14211A;   /* Text */
+  --grau:    #4C5A50;   /* Fließtext gedämpft */
+  --linie:   #DCE3D6;
+  --radius:  18px;
+  --font-display: "Anton","Arial Narrow",Impact,sans-serif;
+  --font-body: "Archivo",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:92px}
+body{
+  font-family:var(--font-body);
+  color:var(--tinte);
+  background:var(--papier);
+  line-height:1.6;
+  font-size:1.0625rem;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{color:inherit}
+ul{list-style:none}
+:focus-visible{outline:3px solid var(--moos);outline-offset:3px;border-radius:4px}
+
+.wrap{max-width:1180px;margin-inline:auto;padding-inline:clamp(20px,4vw,40px)}
+.section{padding-block:clamp(64px,9vw,116px)}
+
+/* ---------- Typografie ---------- */
+.eyebrow{
+  font:700 .78rem/1 var(--font-body);
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--moos);
+  display:inline-flex;align-items:center;gap:10px;
+  margin-bottom:16px;
+}
+.eyebrow::before{content:"";width:26px;height:3px;background:var(--limette);border-radius:2px}
+.on-dark .eyebrow{color:var(--limette)}
+h1,h2,.display{
+  font-family:var(--font-display);
+  font-weight:400;text-transform:uppercase;
+  letter-spacing:.015em;line-height:.98;
+}
+h2{font-size:clamp(2.1rem,4.6vw,3.4rem);margin-bottom:18px}
+@media(max-width:430px){h2{font-size:clamp(1.7rem,8vw,2.05rem)}}
+h3{font:700 1.16rem/1.35 var(--font-body)}
+.lead{color:var(--grau);max-width:56ch;font-size:1.09rem}
+.on-dark .lead{color:#C8D6C6}
+.accent{color:var(--limette)}
+.section-head{display:grid;gap:8px;margin-bottom:clamp(34px,5vw,54px)}
+.section-head > *{min-width:0}
+.section-head .side-note{color:var(--grau);font-weight:600;font-size:.98rem}
+@media(min-width:860px){
+  .section-head{grid-template-columns:1fr auto;align-items:end}
+  .section-head .side-note{max-width:30ch;text-align:right}
+}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font:600 1rem var(--font-body);
+  padding:15px 26px;border-radius:999px;
+  border:2px solid transparent;cursor:pointer;text-decoration:none;
+  transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+  white-space:nowrap;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0)}
+.btn-lime{background:var(--limette);color:var(--tinte)}
+.btn-lime:hover{box-shadow:0 10px 24px rgba(201,241,106,.35)}
+.btn-ghost{border-color:currentColor;background:transparent}
+.btn .ico{width:20px;height:20px}
+
+.ico{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* ---------- Header ---------- */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(243,245,238,.88);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--linie);
+  transition:box-shadow .2s ease;
+}
+.site-header.scrolled{box-shadow:0 6px 24px rgba(13,47,35,.08)}
+.header-inner{display:flex;align-items:center;gap:24px;height:76px}
+.brand{display:flex;align-items:center;gap:13px;text-decoration:none}
+.brand-logo{
+  width:auto;height:52px;flex:none;
+  border-radius:10px;
+  image-rendering:auto;
+}
+.brand-name{font:800 1.12rem/1.1 var(--font-body);letter-spacing:.01em}
+.brand-name small{display:block;font:600 .68rem/1 var(--font-body);letter-spacing:.18em;text-transform:uppercase;color:var(--moos);margin-top:3px}
+.main-nav{margin-left:auto;display:flex;align-items:center;gap:6px}
+.main-nav a.nav-link{
+  text-decoration:none;font-weight:600;font-size:.98rem;
+  padding:10px 14px;border-radius:999px;color:var(--tinte);
+  transition:background .15s ease;
+}
+.main-nav a.nav-link:hover{background:#E7ECDF}
+.nav-cta{margin-left:8px}
+.nav-toggle{display:none}
+
+@media(max-width:900px){
+  .main-nav{
+    position:fixed;inset:76px 0 auto 0;
+    background:var(--papier);border-bottom:1px solid var(--linie);
+    flex-direction:column;align-items:stretch;padding:16px 20px 24px;gap:4px;
+    transform:translateY(-12px);opacity:0;pointer-events:none;
+    transition:opacity .2s ease, transform .2s ease;
+  }
+  .site-header.open .main-nav{transform:none;opacity:1;pointer-events:auto}
+  .main-nav a.nav-link{padding:14px;font-size:1.05rem}
+  .nav-cta{margin:10px 0 0}
+  .nav-toggle{
+    display:grid;place-items:center;margin-left:auto;
+    width:44px;height:44px;border:none;background:none;cursor:pointer;border-radius:10px;
+  }
+  .nav-toggle span,.nav-toggle span::before,.nav-toggle span::after{
+    content:"";display:block;width:22px;height:2px;background:var(--tinte);
+    position:relative;transition:transform .2s ease, opacity .2s ease;
+  }
+  .nav-toggle span::before{position:absolute;top:-7px}
+  .nav-toggle span::after{position:absolute;top:7px}
+  .site-header.open .nav-toggle span{transform:rotate(45deg)}
+  .site-header.open .nav-toggle span::before{transform:rotate(-90deg);top:0}
+  .site-header.open .nav-toggle span::after{opacity:0}
+}
+
+/* ---------- Hero mit Vorher/Nachher-Regler ---------- */
+.hero{background:var(--tanne);color:var(--papier)}
+.hero-grid{display:grid;min-height:min(88vh,880px)}
+@media(min-width:960px){.hero-grid{grid-template-columns:minmax(440px,46%) 1fr}}
+.hero-text{
+  padding:clamp(48px,7vw,88px) clamp(24px,5vw,72px);
+  display:flex;flex-direction:column;justify-content:center;gap:22px;
+}
+.hero-text h1{font-size:clamp(3.2rem,7.2vw,6rem)}
+.hero-text h1 span{display:block}
+/* Überschrift links, Logo rechts – Logo exakt so hoch wie die drei Zeilen */
+.hero-text{--h1:clamp(2.4rem,4.2vw,6rem)}
+.hero-lockup{display:flex;align-items:center;gap:clamp(14px,2vw,24px);flex-wrap:wrap}
+.hero-lockup h1{margin:0;font-size:var(--h1)}
+.hero-logo-card{
+  flex:none;
+  height:calc(var(--h1) * 2.95); /* 3 Zeilen x Zeilenhöhe .98 */
+  padding:clamp(8px,1vw,13px);
+  background:var(--papier);border-radius:16px;
+  box-shadow:0 14px 34px rgba(0,0,0,.28);
+  display:flex;align-items:center;justify-content:center;
+}
+.hero-logo-card img{height:100%;width:auto;display:block}
+.hero-sub{color:#C8D6C6;max-width:46ch;font-size:1.12rem}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:6px}
+.hero-note{display:flex;align-items:center;gap:10px;color:#9FB8A4;font-size:.92rem;font-weight:600}
+.hero-note .ico{width:18px;height:18px;color:var(--limette)}
+
+.compare{position:relative;min-height:480px;user-select:none;--split:52%}
+@media(max-width:959px){.compare{height:64vh;min-height:420px}}
+.compare .panes{position:absolute;inset:0;display:flex}
+.pane{position:relative;overflow:hidden;min-width:0}
+.pane.before{width:var(--split)}
+.pane.after{flex:1}
+.pane img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pane .tag{
+  position:absolute;bottom:18px;z-index:2;
+  font:700 .74rem/1 var(--font-body);letter-spacing:.14em;text-transform:uppercase;
+  padding:9px 14px;border-radius:999px;
+}
+.pane.before .tag{left:18px;background:rgba(20,33,26,.82);color:var(--papier)}
+.pane.after .tag{right:18px;background:var(--limette);color:var(--tinte)}
+.divider{
+  position:absolute;top:0;bottom:0;left:var(--split);width:3px;
+  background:var(--limette);transform:translateX(-50%);z-index:3;pointer-events:none;
+}
+.divider .knob{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:52px;height:52px;border-radius:50%;
+  background:var(--limette);color:var(--tinte);
+  display:grid;place-items:center;
+  box-shadow:0 8px 24px rgba(0,0,0,.35);
+}
+.compare input[type=range]{
+  position:absolute;inset:0;width:100%;height:100%;
+  opacity:0;cursor:ew-resize;z-index:4;margin:0;
+  -webkit-appearance:none;appearance:none;background:transparent;
+}
+.compare input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:60px;height:100%}
+.compare input[type=range]::-moz-range-thumb{width:60px;height:1px;border:none;background:transparent}
+.compare-hint{
+  position:absolute;top:16px;left:50%;transform:translateX(-50%);z-index:3;
+  background:rgba(20,33,26,.7);color:#DCE8DB;
+  font:600 .8rem/1 var(--font-body);letter-spacing:.06em;
+  padding:8px 14px;border-radius:999px;pointer-events:none;
+  display:flex;gap:8px;align-items:center;
+}
+.compare-hint .ico{width:16px;height:16px}
+
+/* ---------- Vertrauens-Leiste ---------- */
+.strip{background:var(--limette);color:var(--tinte)}
+.strip-inner{
+  display:flex;flex-wrap:wrap;gap:10px 34px;justify-content:center;
+  padding-block:16px;
+  font:700 .86rem/1.3 var(--font-body);letter-spacing:.05em;text-transform:uppercase;
+}
+.strip-inner span{display:inline-flex;align-items:center;gap:9px}
+.strip-inner .ico{width:17px;height:17px;stroke-width:2.4}
+
+/* ---------- Leistungen ---------- */
+.services{display:grid;gap:0 56px}
+@media(min-width:820px){.services{grid-template-columns:1fr 1fr}}
+.service{
+  border-top:2px solid var(--tinte);
+  padding:24px 0 28px;
+  display:grid;grid-template-columns:48px 1fr;gap:18px;align-items:start;
+}
+.service .icon-box{
+  width:48px;height:48px;border-radius:14px;background:#E6EEDC;color:var(--tanne);
+  display:grid;place-items:center;
+}
+.service h3{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:5px}
+.service p{color:var(--grau);font-size:.99rem}
+.chip{
+  font:700 .68rem/1 var(--font-body);letter-spacing:.1em;text-transform:uppercase;
+  padding:6px 10px;border-radius:999px;background:#E6EEDC;color:var(--tanne);
+}
+.chip.lime{background:var(--limette);color:var(--tinte)}
+
+/* ---------- Ergebnisse (Vorher/Nachher) ---------- */
+.results{background:var(--weiss)}
+.case{margin-bottom:clamp(44px,6vw,64px)}
+.case:last-child{margin-bottom:0}
+.case .pair{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.6vw,16px)}
+.case figure{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--linie)}
+.case figure img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5}
+.flag{
+  position:absolute;top:14px;left:14px;
+  font:700 .72rem/1 var(--font-body);letter-spacing:.14em;text-transform:uppercase;
+  padding:8px 13px;border-radius:999px;
+  background:rgba(20,33,26,.85);color:var(--papier);
+}
+.flag.after{background:var(--limette);color:var(--tinte)}
+.case-caption{
+  margin-top:14px;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;
+  color:var(--grau);font-size:.98rem;
+}
+.case-caption strong{color:var(--tinte);font-weight:700}
+.case.wide figure img{aspect-ratio:16/8;object-position:50% 58%}
+@media(max-width:560px){
+  .case .pair{grid-template-columns:1fr}
+  .case figure img{aspect-ratio:4/3}
+  .case.wide figure img{aspect-ratio:4/3}
+}
+
+/* ---------- Preise ---------- */
+.pricing{background:var(--tanne);color:var(--papier)}
+/* Neukundenrabatt-Banner in der Preisübersicht */
+.promo-banner{
+  display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;
+  text-align:center;
+  background:var(--limette);color:var(--tinte);
+  border-radius:16px;
+  padding:16px 26px;
+  margin:0 0 clamp(22px,3vw,30px);
+  box-shadow:0 12px 30px rgba(201,241,106,.28);
+  animation:promo-pulse 2.6s ease-in-out infinite;
+}
+.promo-banner .promo-ico{width:26px;height:26px;flex:none;stroke:var(--tinte);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.promo-banner .promo-text{font:800 clamp(1.05rem,2.2vw,1.4rem)/1.2 var(--font-body);letter-spacing:.01em}
+.promo-banner .promo-text b{font-family:var(--font-display);font-weight:400;letter-spacing:.02em}
+.promo-banner .promo-sub{
+  font:700 .74rem/1 var(--font-body);letter-spacing:.12em;text-transform:uppercase;
+  background:var(--tinte);color:var(--limette);
+  padding:7px 12px;border-radius:999px;white-space:nowrap;
+}
+@keyframes promo-pulse{
+  0%,100%{box-shadow:0 12px 30px rgba(201,241,106,.28)}
+  50%{box-shadow:0 12px 42px rgba(201,241,106,.55)}
+}
+@media(prefers-reduced-motion:reduce){.promo-banner{animation:none}}
+
+.tiers{display:grid;gap:18px;margin-bottom:clamp(40px,5vw,56px)}@media(min-width:900px){.tiers{grid-template-columns:repeat(3,1fr);align-items:stretch}}
+.tier{
+  background:var(--tanne-2);
+  border:1px solid rgba(201,241,106,.16);
+  border-radius:var(--radius);
+  padding:30px 28px;display:flex;flex-direction:column;gap:16px;position:relative;
+}
+.tier.featured{border:2px solid var(--limette);box-shadow:0 18px 44px rgba(0,0,0,.3)}
+.tier .badge{
+  position:absolute;top:-13px;left:26px;
+  background:var(--limette);color:var(--tinte);
+  font:700 .7rem/1 var(--font-body);letter-spacing:.12em;text-transform:uppercase;
+  padding:7px 12px;border-radius:999px;
+}
+.tier h3{font:700 .82rem/1 var(--font-body);letter-spacing:.16em;text-transform:uppercase;color:#AFC9B2}
+.tier .price{font-family:var(--font-display);font-size:clamp(2.4rem,3.4vw,3rem);line-height:1;color:var(--weiss)}
+.tier .price small{font:600 .95rem var(--font-body);color:#AFC9B2;letter-spacing:.02em;margin-left:6px}
+.tier ul{display:grid;gap:11px;font-size:.98rem;color:#DCE8DB}
+.tier ul .ico{width:19px;height:19px;color:var(--limette);stroke-width:2.4;margin-top:3px}
+.tier li{display:flex;gap:11px;align-items:start}
+.tier .tier-note{margin-top:auto;padding-top:8px;color:#9FB8A4;font-size:.88rem}
+
+.board{
+  border:1px solid rgba(201,241,106,.2);border-radius:var(--radius);
+  padding:clamp(24px,4vw,40px);
+  display:grid;gap:26px;
+}
+@media(min-width:900px){.board{grid-template-columns:1.1fr 1fr;gap:48px}}
+.board h3{font-family:var(--font-display);font-weight:400;text-transform:uppercase;font-size:1.5rem;letter-spacing:.02em;margin-bottom:6px}
+.board .sub{color:#AFC9B2;font-size:.95rem;margin-bottom:18px}
+.price-row{display:flex;align-items:baseline;gap:14px;padding-block:13px;border-bottom:1px dashed rgba(220,232,219,.22)}
+.price-row:last-of-type{border-bottom:none}
+.price-row .dots{flex:1;border-bottom:2px dotted rgba(220,232,219,.3);transform:translateY(-5px)}
+.price-row .val{font-family:var(--font-display);font-size:1.45rem;color:var(--limette);white-space:nowrap}
+.price-row .label b{display:block;font-weight:700}
+.price-row .label small{color:#AFC9B2;font-size:.86rem}
+.extra-list{display:grid;gap:14px;font-size:.98rem;color:#DCE8DB}
+.extra-list li{display:flex;gap:12px;align-items:start}
+.extra-list .ico{color:var(--limette);width:20px;height:20px;margin-top:2px}
+.pricing-foot{
+  margin-top:26px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;
+  color:#AFC9B2;font-size:.95rem;
+}
+.pricing-foot .ico{color:var(--limette)}
+
+/* ---------- Warum ONF + Team ---------- */
+.why-grid{display:grid;gap:clamp(36px,6vw,72px);align-items:center}
+@media(min-width:960px){.why-grid{grid-template-columns:1.05fr .95fr}}
+.claims{display:grid;gap:26px}
+.claim{border-left:4px solid var(--limette);padding-left:20px}
+.claim h3{font-family:var(--font-display);font-weight:400;text-transform:uppercase;font-size:1.45rem;letter-spacing:.02em;margin-bottom:6px}
+.claim p{color:var(--grau);font-size:1rem;max-width:52ch}
+.collage{position:relative;padding-bottom:56px}
+.collage .photo-main{border-radius:var(--radius);overflow:hidden;box-shadow:0 24px 60px rgba(13,47,35,.22)}
+.collage .photo-main img{aspect-ratio:4/5;object-fit:cover;width:100%}
+.collage .photo-small{
+  position:absolute;left:-6%;bottom:0;width:52%;
+  border-radius:14px;overflow:hidden;
+  border:6px solid var(--weiss);box-shadow:0 18px 44px rgba(13,47,35,.28);
+  transform:rotate(-3deg);
+}
+.collage .photo-small img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.collage figcaption{
+  margin:18px 0 0 50%;
+  color:var(--grau);font-size:.9rem;font-weight:600;text-align:right;
+}
+@media(max-width:560px){
+  .collage{padding-bottom:44px}
+  .collage .photo-small{left:-4%;width:58%}
+  .collage figcaption{margin:64px 0 0 0;text-align:left}
+}
+
+/* ---------- Kontakt ---------- */
+.contact-panel{
+  background:var(--tanne);color:var(--papier);
+  border-radius:28px;
+  padding:clamp(40px,6vw,72px) clamp(24px,5vw,72px);
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.contact-panel::after{
+  content:"";position:absolute;inset:auto -80px -120px auto;width:340px;height:340px;
+  background:radial-gradient(closest-side, rgba(201,241,106,.22), transparent 70%);
+  pointer-events:none;
+}
+.contact-panel h2{color:var(--weiss)}
+.contact-panel .lead{margin-inline:auto}
+.phone-xl{
+  display:inline-block;margin:26px auto 6px;
+  font-family:var(--font-display);font-size:clamp(2.3rem,6.5vw,4.4rem);
+  color:var(--limette);text-decoration:none;letter-spacing:.02em;line-height:1;
+}
+.phone-xl:hover{text-decoration:underline;text-decoration-thickness:4px;text-underline-offset:8px}
+.contact-meta{color:#AFC9B2;font-weight:600;margin-bottom:26px}
+.contact-meta a{color:var(--papier);text-decoration-color:rgba(201,241,106,.6);text-underline-offset:3px}
+.contact-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.contact-panel .btn-ghost{color:var(--papier)}
+.btn-review{background:var(--weiss);color:var(--tinte)}
+.btn-review .ico{color:#F5A623;stroke:#F5A623;fill:#F5A623;stroke-width:1}
+.btn-review:hover{box-shadow:0 10px 24px rgba(255,255,255,.22)}
+.review-note{margin-top:18px;color:#9FB8A4;font-size:.92rem}
+
+/* ---------- Footer ---------- */
+.site-footer{background:var(--tinte);color:#AFC9B2;padding-block:34px;font-size:.92rem}
+.footer-inner{display:flex;flex-wrap:wrap;gap:14px 30px;align-items:center;justify-content:space-between}
+.footer-inner strong{color:var(--papier);font-weight:800}
+.footer-inner a{color:#DCE8DB;text-decoration:none}
+.footer-inner a:hover{text-decoration:underline}
+.footer-tag{width:100%;text-align:center;margin-top:18px;color:#6E8074;font:700 .74rem/1 var(--font-body);letter-spacing:.2em;text-transform:uppercase}
+
+/* ---------- Reveal-Animation ---------- */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .btn,.main-nav{transition:none}
+}
+
+/* ---- Über uns: seitenspezifisch ---- */
+.page-hero{background:var(--tanne);color:var(--papier);padding-block:clamp(56px,8vw,104px)}
+.page-hero .lead{margin-top:14px;max-width:60ch}
+.breadcrumb{display:flex;gap:8px;align-items:center;color:#9FB8A4;font-size:.85rem;font-weight:600;margin-bottom:20px}
+.breadcrumb a{color:#C8D6C6;text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb span{opacity:.6}
+.page-hero h1{font-size:clamp(2.8rem,6.5vw,5rem)}
+
+.about-grid{display:grid;gap:clamp(30px,5vw,60px);align-items:center}
+.about-grid > *{min-width:0}
+@media(min-width:900px){.about-grid{grid-template-columns:1fr 1fr}}
+.about-photo{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:0 22px 54px rgba(13,47,35,.22)}
+.about-photo img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 42%;display:block}
+.about-photo figcaption{
+  position:absolute;left:0;right:0;bottom:0;
+  padding:26px 22px 16px;
+  background:linear-gradient(to top, rgba(13,31,25,.82), transparent);
+  color:#EAF1E6;font-weight:600;font-size:.9rem;
+}
+.about-copy p{margin-bottom:16px;color:var(--grau);max-width:56ch}
+.about-copy p:last-child{margin-bottom:0}
+.about-copy .kicker{color:var(--tinte);font-weight:700}
+.founder-tags{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 4px}
+.founder-tags span{
+  display:inline-flex;align-items:center;gap:8px;
+  font:600 .86rem/1 var(--font-body);
+  background:#E6EEDC;color:var(--tanne);padding:9px 14px;border-radius:999px;
+}
+.founder-tags .ico{width:16px;height:16px;color:var(--moos);stroke-width:2.4}
+
+/* Video */
+.video-wrap{display:flex;justify-content:center}
+.onf-video{
+  width:100%;max-width:360px;aspect-ratio:9/16;height:auto;
+  border-radius:var(--radius);background:#0b120e;display:block;object-fit:cover;
+  box-shadow:0 22px 54px rgba(13,47,35,.24);
+}
+
+.values{display:grid;gap:20px}
+@media(min-width:760px){.values{grid-template-columns:repeat(3,1fr)}}
+.value-card{border:1px solid var(--linie);border-radius:var(--radius);padding:28px 26px;background:var(--weiss)}
+.value-card .icon-box{width:48px;height:48px;border-radius:14px;background:#E6EEDC;color:var(--tanne);display:grid;place-items:center;margin-bottom:16px}
+.value-card h3{margin-bottom:7px}
+.value-card p{color:var(--grau);font-size:.97rem}
+
+.pledge{margin-top:clamp(30px,4vw,44px);border-left:4px solid var(--limette);padding:6px 0 6px 22px;font-size:1.12rem;color:var(--tinte);max-width:70ch}
+
+.about-cta{margin-top:clamp(40px,6vw,64px);background:var(--tanne);color:var(--papier);border-radius:24px;padding:clamp(34px,5vw,56px);text-align:center;position:relative;overflow:hidden}
+.about-cta::after{content:"";position:absolute;inset:auto -80px -120px auto;width:320px;height:320px;background:radial-gradient(closest-side, rgba(201,241,106,.2), transparent 70%);pointer-events:none}
+.about-cta h2{color:var(--weiss)}
+.about-cta .lead{margin-inline:auto;color:#C8D6C6}
+.about-cta .btn-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:22px;position:relative}
+.about-cta .btn-ghost{color:var(--papier)}
+
+/* ---- Über uns: zweizeilige Überschrift ---- */
+.about-h2{font-size:clamp(1.9rem,3.8vw,3.05rem)}
+.about-h2 span{display:block}
+/* ---- Wir in Aktion: Medien-Panel mit Blätter-Deko ---- */
+.aktion-panel{
+  position:relative;overflow:hidden;
+  background:linear-gradient(165deg,#E7F1DA,#F5F8EF 55%,#EBF3DF);
+  border:1px solid #D8E6C6;border-radius:28px;
+  padding:clamp(22px,4vw,46px);
+}
+.aktion-panel .section-head{position:relative;z-index:1;margin-bottom:clamp(20px,3vw,32px)}
+.leaf-deco{position:absolute;pointer-events:none;z-index:0}
+.ld-1{width:clamp(92px,11vw,150px);top:-30px;right:-22px;transform:rotate(16deg)}
+.ld-2{width:clamp(84px,10vw,134px);bottom:-34px;left:-24px;transform:rotate(-158deg)}
+.aktion-grid{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:clamp(10px,1.5vw,16px);
+}
+.aktion-tile{
+  position:relative;margin:0;
+  border-radius:16px;overflow:hidden;
+  aspect-ratio:9/16;background:#0d1f19;
+  border:2px solid var(--weiss);
+  box-shadow:0 14px 30px rgba(13,47,35,.16);
+}
+.aktion-tile:nth-child(even){transform:translateY(clamp(8px,1.4vw,16px))}
+.aktion-tile video,.aktion-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.aktion-chip{
+  position:absolute;left:10px;top:10px;z-index:1;
+  background:rgba(20,33,26,.84);color:var(--papier);
+  font:700 .68rem/1 var(--font-body);letter-spacing:.12em;text-transform:uppercase;
+  padding:7px 11px;border-radius:999px;pointer-events:none;
+}
+@media(max-width:820px){
+  .aktion-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .aktion-tile:nth-child(even){transform:none}
+}
+/* ---------- Reinigungs-Animation (scrollgesteuert, Echtfoto) ---------- */
+.clean-demo{background:var(--weiss)}
+.demo-scroll{position:relative;height:340vh}
+.demo-scroll.no-scrub{height:auto}
+.demo-sticky{position:sticky;top:96px}
+.no-scrub .demo-sticky{position:static}
+
+.demo-layout{display:grid;gap:clamp(22px,3.5vw,52px);align-items:center;justify-items:center}
+@media(min-width:900px){.demo-layout{grid-template-columns:auto 1fr;justify-items:stretch}}
+
+.demo-stage{
+  position:relative;
+  aspect-ratio:675/960;
+  height:min(520px,58vh);width:auto;max-width:100%;
+  margin-inline:auto;
+  border-radius:var(--radius);overflow:hidden;
+  background:#8B857A;
+  box-shadow:0 24px 58px rgba(13,47,35,.26);
+}
+@media(max-width:899px){.demo-stage{height:min(430px,50vh)}}
+.demo-stage .demo-base,
+.demo-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover}
+
+.demo-flag{
+  position:absolute;top:12px;left:12px;z-index:3;
+  display:inline-flex;align-items:center;gap:8px;
+  font:700 .68rem/1 var(--font-body);letter-spacing:.13em;text-transform:uppercase;
+  padding:8px 13px;border-radius:999px;
+  background:rgba(20,33,26,.85);color:var(--papier);
+  transition:background .4s ease,color .4s ease;
+}
+.demo-flag .dot{width:7px;height:7px;border-radius:50%;background:#C46A4A;transition:background .4s ease}
+.demo-stage.is-clean .demo-flag{background:var(--limette);color:var(--tinte)}
+.demo-stage.is-clean .demo-flag .dot{background:var(--moos)}
+
+.demo-meter{
+  position:absolute;left:12px;right:12px;bottom:12px;z-index:3;
+  display:flex;align-items:center;gap:10px;
+  background:rgba(20,33,26,.82);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  color:var(--papier);padding:9px 13px;border-radius:999px;
+  font:700 .72rem/1 var(--font-body);letter-spacing:.05em;
+}
+.demo-meter .bar{flex:1;height:5px;border-radius:999px;background:rgba(220,232,219,.26);overflow:hidden}
+.demo-meter .bar i{display:block;height:100%;width:0;background:var(--limette);border-radius:999px}
+.demo-meter .pct{min-width:4.2ch;text-align:right;color:var(--limette);font-variant-numeric:tabular-nums}
+
+/* Ablauf-Schritte */
+.demo-steps{display:grid;gap:16px;max-width:34rem}
+.demo-steps li{
+  display:flex;gap:16px;align-items:flex-start;
+  padding:16px 18px;border-radius:16px;
+  border:1px solid var(--linie);background:var(--papier);
+  opacity:.55;transition:opacity .35s ease,border-color .35s ease,background .35s ease,transform .35s ease;
+}
+.demo-steps li.is-active{
+  opacity:1;background:var(--weiss);
+  border-color:var(--moos);transform:translateY(-2px);
+  box-shadow:0 12px 30px rgba(13,47,35,.10);
+}
+.demo-steps .step{
+  font-family:var(--font-display);font-size:1.45rem;line-height:1;
+  color:var(--linie);flex:none;transition:color .35s ease;
+}
+.demo-steps li.is-active .step{color:var(--moos)}
+.demo-steps h3{margin-bottom:4px}
+.demo-steps p{color:var(--grau);font-size:.96rem}
+@media(max-width:899px){
+  .demo-steps{width:100%;max-width:none}
+  .demo-steps li{display:none}
+  .demo-steps li.is-active{display:flex}
+}
+
+.demo-hint{
+  display:flex;align-items:center;gap:9px;justify-content:center;
+  margin-top:18px;color:var(--grau);font-size:.94rem;font-weight:600;
+}
+.demo-hint .ico{width:18px;height:18px;color:var(--moos);flex:none}
+.demo-hint.is-done{color:var(--moos)}
+
+/* Fallback ohne Bewegung */
+.demo-static{display:none;gap:clamp(10px,1.6vw,16px);grid-template-columns:1fr 1fr;width:100%}
+.no-scrub .demo-static{display:grid}
+.no-scrub .demo-sticky{display:none}
+.demo-static figure{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--linie)}
+.demo-static img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:675/960}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<!-- ============ Icon-Sprite ============ -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.5l5 5 10-11"/></symbol>
+  <symbol id="i-arrows" viewBox="0 0 24 24"><path d="M8.5 12H3m0 0 3.2-3.2M3 12l3.2 3.2M15.5 12H21m0 0-3.2-3.2M21 12l-3.2 3.2"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5.5 4h3l1.7 4.2-2.1 1.6a12.5 12.5 0 0 0 6.1 6.1l1.6-2.1L20 15.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3.5 6.2 2 2 0 0 1 5.5 4z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="m4.5 7.5 7.5 5.5 7.5-5.5"/></symbol>
+  <symbol id="i-spray" viewBox="0 0 24 24"><path d="M3.5 10h8.5v5H3.5zM12 11.5h2.5l2-1.5M14.5 12.5h2M12 13.5h2.5l2 1.5M18.5 7.5 21 6M19.5 12H22M18.5 16.5 21 18M6 15v4.5"/></symbol>
+  <symbol id="i-shears" viewBox="0 0 24 24"><path d="M8 3.5 13.5 14M16 3.5 10.5 14"/><circle cx="7.5" cy="18.5" r="2.6"/><circle cx="16.5" cy="18.5" r="2.6"/><path d="m10 16 2-2 2 2"/></symbol>
+  <symbol id="i-bucket" viewBox="0 0 24 24"><path d="M5 9h14l-1.5 10a2 2 0 0 1-2 1.8h-7A2 2 0 0 1 6.5 19zM8 9a4 4 0 0 1 8 0"/><path d="M12 13v4"/></symbol>
+  <symbol id="i-house" viewBox="0 0 24 24"><path d="m3.5 11 8.5-6.5L20.5 11M6 10v10h12V10"/><rect x="10" y="13" width="4" height="4"/></symbol>
+  <symbol id="i-grass" viewBox="0 0 24 24"><path d="M6 20.5c0-5 .8-8 .8-8s2 2.8 2 8M11 20.5c0-7 1-11 1-11s2.2 4 2.2 11M17.8 20.5c0-4.6-.9-7.4-.9-7.4s-1.9 2.6-1.9 7.4M3.5 20.5h17"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M12 3.5C7.5 7.5 5.5 11.3 5.5 15a6.5 6.5 0 0 0 13 0c0-3.7-2-7.5-6.5-11.5z"/><path d="M12 9v9.5M12 13l-2.6-2M12 15.5l2.7-2"/></symbol>
+  <symbol id="i-bin" viewBox="0 0 24 24"><path d="M4.5 6.5h15M9.5 6.5v-2h5v2M6.5 6.5l1 13.5h9l1-13.5M10 10v6.5M14 10v6.5"/></symbol>
+  <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="5.5" y="4.5" width="13" height="16.5" rx="2"/><path d="M9.5 4.5V3h5v1.5zM9 13l2.2 2.2L15.5 11"/></symbol>
+  <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3c3.4 4.1 5.6 7.2 5.6 10.1a5.6 5.6 0 1 1-11.2 0C6.4 10.2 8.6 7.1 12 3z"/></symbol>
+  <symbol id="i-euro" viewBox="0 0 24 24"><path d="M17.5 6.5A6.5 6.5 0 0 0 7 12a6.5 6.5 0 0 0 10.5 5.5M4.5 10.5h8M4.5 13.5h7"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><path d="M4 15.5 5.6 10a2 2 0 0 1 1.9-1.5h9a2 2 0 0 1 1.9 1.5L20 15.5M4 15.5h16v3.5h-2.5M4 15.5V19h2.5m0 0h11"/><circle cx="7.8" cy="18.8" r="1.4"/><circle cx="16.2" cy="18.8" r="1.4"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></symbol>
+  <symbol id="i-mower" viewBox="0 0 24 24"><path d="M3 16.5h9l1.5-6H6l-3 6zM12 16.5h4.5V8h4M3 16.5a2 2 0 1 0 4 0 2 2 0 0 0-4 0M14.5 16.5a2 2 0 1 0 4 0 2 2 0 0 0-4 0M20.5 8V6"/></symbol>
+  <symbol id="i-tools" viewBox="0 0 24 24"><path d="M14.5 6.5a3.5 3.5 0 0 1 4.6 4.6l-9 9-4.2-4.2 9-9zM4 20l2.5-2.5M15 8l1.8 1.8"/></symbol>
+  <symbol id="i-log" viewBox="0 0 24 24"><path d="M6.5 6.5h11a3 3 0 0 1 0 6h-11a3 3 0 0 1 0-6zM6.5 12.5h11a3 3 0 0 1 0 6h-11a3 3 0 0 1 0-6z"/><path d="M6.5 6.5a3 3 0 0 1 0 6M14 6.8v5.2M17.4 6.6l-1.6 5.4"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4.5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.6" cy="7.4" r="1" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M14.6 4.2v9.9a4.05 4.05 0 1 1-3.4-4"/><path d="M14.6 5.3c.6 2.3 2.4 3.9 4.9 4.1"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M4 8.5 12 5l8 3.5M4 8.5V17l8 3.5 8-3.5V8.5M4 8.5l8 3.5 8-3.5M12 12v8.5"/><path d="m8.2 6.7 8 3.5"/></symbol>
+</svg>
+
+<!-- ============ Kopfzeile ============ -->
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top" aria-label="ONF Tiefenrein – zur Startseite">
+      <img class="brand-logo" src="assets/logo.png" width="736" height="720"
+           alt="ONF Tiefenrein – Logo">
+      <span class="brand-name">ONF Tiefenrein<small>Sauber. Frisch. Wie neu.</small></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mainnav"><span></span></button>
+    <nav class="main-nav" id="mainnav" aria-label="Hauptnavigation">
+      <a class="nav-link" href="#leistungen">Leistungen</a>
+      <a class="nav-link" href="#ergebnisse">Vorher / Nachher</a>
+      <a class="nav-link" href="#preise">Preise</a>
+      <a class="nav-link" href="#ueber-uns">Über uns</a>
+      <a class="nav-link" href="#kontakt">Kontakt</a>
+      <a class="btn btn-lime nav-cta" href="tel:+4915205845274">
+        <svg class="ico"><use href="#i-phone"/></svg>01520 5845274
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div id="view-home">
+<!-- ============ Hero: Vorher/Nachher-Regler ============ -->
+<section class="hero on-dark">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <span class="eyebrow">Pflasterreinigung &amp; Gartenpflege</span>
+      <div class="hero-lockup">
+        <h1><span>Sauber.</span><span>Frisch.</span><span class="accent">Wie neu.</span></h1>
+        <span class="hero-logo-card">
+          <img src="assets/logo.png" width="633" height="640" alt="ONF Tiefenrein – Logo">
+        </span>
+      </div>
+      <p class="hero-sub">ONF Tiefenrein bringt Terrassen, Auffahrten und Pflasterflächen wieder zum Strahlen – wir entfernen Schmutz, Moos, Algen und hartnäckige Ablagerungen. Und wenn's sein soll, machen wir den Garten gleich mit.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-lime" href="#kontakt">Kostenlose Besichtigung</a>
+        <a class="btn btn-ghost" href="#preise">Preise ansehen</a>
+      </div>
+      <p class="hero-note"><svg class="ico"><use href="#i-check"/></svg>Besichtigung &amp; Beratung vor Ort – kostenlos und unverbindlich</p>
+    </div>
+    <div class="compare" id="compare">
+      <div class="panes" aria-hidden="true">
+        <div class="pane before">
+          <img src="assets/hero-vorher.jpg" alt="">
+          <span class="tag">Vorher</span>
+        </div>
+        <div class="pane after">
+          <img src="assets/hero-nachher.jpg" alt="">
+          <span class="tag">Nachher</span>
+        </div>
+      </div>
+      <div class="divider" aria-hidden="true">
+        <span class="knob"><svg class="ico"><use href="#i-arrows"/></svg></span>
+      </div>
+      <span class="compare-hint" aria-hidden="true"><svg class="ico"><use href="#i-arrows"/></svg>Ziehen &amp; vergleichen</span>
+      <input type="range" min="14" max="86" value="52" step="0.5"
+             aria-label="Vorher-Nachher-Vergleich: Regler verschieben, um mehr vom gereinigten Pflaster zu sehen">
+    </div>
+  </div>
+</section>
+
+<!-- ============ Vertrauens-Leiste ============ -->
+<div class="strip" role="presentation">
+  <div class="wrap strip-inner">
+    <span><svg class="ico"><use href="#i-check"/></svg>Kostenlose Besichtigung</span>
+    <span><svg class="ico"><use href="#i-check"/></svg>Regional rund um Stendal</span>
+    <span><svg class="ico"><use href="#i-check"/></svg>Gründlich &amp; zuverlässig</span>
+    <span><svg class="ico"><use href="#i-check"/></svg>Faire Preise</span>
+  </div>
+</div>
+
+<!-- ============ Leistungen ============ -->
+<section class="section" id="leistungen">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">Was wir machen</span>
+        <h2>Leistungen</h2>
+      </div>
+      <p class="side-note">Alles rund ums Grundstück – aus einer Hand, regional rund um Stendal.</p>
+    </div>
+    <div class="services">
+      <article class="service reveal">
+        <span class="icon-box"><svg class="ico"><use href="#i-spray"/></svg></span>
+        <div>
+          <h3>Auffahrten, Terrassen &amp; Pflaster <span class="chip">Verfugen</span></h3>
+          <p>Professionelle Reinigung von Auffahrten, Terrassen und Pflasterflächen – auf Wunsch inklusive neuer Quarzsand&#8209;Verfugung.</p>
+        </div>
+      </article>
+      <article class="service reveal">
+        <span class="icon-box"><svg class="ico"><use href="#i-mower"/></svg></span>
+        <div>
+          <h3>Rasenpflege &amp; Rasenschnitt</h3>
+          <p>Fachgerechte Rasenpflege und sauberer Rasenschnitt – regelmäßig oder einmalig.</p>
+        </div>
+      </article>
+      <article class="service reveal">
+        <span class="icon-box"><svg class="ico"><use href="#i-shears"/></svg></span>
+        <div>
+          <h3>Hecken- &amp; Strauchschnitt <span class="chip">Formschnitt</span></h3>
+          <p>Präziser Form-, Hecken- und Strauchschnitt für saubere Kanten – Entsorgung vom Schnittgut inklusive.</p>
+        </div>
+      </article>
+      <article class="service reveal">
+        <span class="icon-box"><svg class="ico"><use href="#i-grass"/></svg></span>
+        <div>
+          <h3>Gartenpflege &amp; Grünflächenservice</h3>
+          <p>Rundum gepflegte Grünflächen – vom einzelnen Beet bis zur kompletten Außenanlage.</p>
+        </div>
+      </article>
+      <article class="service reveal">
+        <span class="icon-box"><svg class="ico"><use href="#i-house"/></svg></span>
+        <div>
+          <h3>Fassadenreinigung <span class="chip">auf Anfrage</span></h3>
+          <p>Wir schauen uns Ihre Fassade vor Ort an und sagen ehrlich, was möglich ist.</p>
+        </div>
+      </article>
+      <article class="service reveal">
+        <span class="icon-box"><svg class="ico"><use href="#i-leaf"/></svg></span>
+        <div>
+          <h3>Laubentfernung</h3>
+          <p>Wege, Beete und Rasenflächen wieder frei – bevor sich Nässe und Grünbelag festsetzen.</p>
+        </div>
+      </article>
+      <article class="service reveal">
+        <span class="icon-box"><svg class="ico"><use href="#i-bin"/></svg></span>
+        <div>
+          <h3>Entsorgung von Gartenabfällen</h3>
+          <p>Grünschnitt und Co. nehmen wir direkt mit – Sie müssen sich um nichts kümmern.</p>
+        </div>
+      </article>
+      <article class="service reveal">
+        <span class="icon-box"><svg class="ico"><use href="#i-box"/></svg></span>
+        <div>
+          <h3>Entrümpelungsservice</h3>
+          <p>Keller, Dachboden, Garage oder ganze Räume: Wir räumen aus, tragen raus und entsorgen alles fachgerecht – Sie müssen nur die Tür aufschließen.</p>
+        </div>
+      </article>
+      <article class="service reveal">
+        <span class="icon-box"><svg class="ico"><use href="#i-clipboard"/></svg></span>
+        <div>
+          <h3>Besichtigung &amp; Beratung <span class="chip lime">Kostenlos</span></h3>
+          <p>Wir kommen vorbei, schauen uns alles an und beraten unverbindlich – erst danach gibt es ein festes Angebot.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Ergebnisse: Vorher / Nachher ============ -->
+<section class="section results" id="ergebnisse">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">Vorher / Nachher</span>
+        <h2>Ergebnisse, die man sieht</h2>
+      </div>
+      <p class="side-note">Echte Flächen aus echten Aufträgen – keine Musterbilder.</p>
+    </div>
+
+    <div class="case reveal">
+      <div class="pair">
+        <figure>
+          <img src="assets/case1-vorher.jpg" alt="Gehwegplatten vor der Reinigung: grau, mit Moos und Grünbelag" loading="lazy">
+          <span class="flag">Vorher</span>
+        </figure>
+        <figure>
+          <img src="assets/case1-nachher.jpg" alt="Dieselben Gehwegplatten nach der Tiefenreinigung: sauber und gleichmäßig anthrazit" loading="lazy">
+          <span class="flag after">Nachher</span>
+        </figure>
+      </div>
+      <p class="case-caption"><strong>Gehwegplatten</strong> Moos und Grünbelag komplett entfernt – die Fläche wirkt wie neu verlegt.</p>
+    </div>
+
+    <div class="case reveal">
+      <div class="pair">
+        <figure>
+          <img src="assets/case2-vorher.jpg" alt="Verbundpflaster vor der Reinigung: verschmutzt, mit Flecken und Bewuchs in den Fugen" loading="lazy">
+          <span class="flag">Vorher</span>
+        </figure>
+        <figure>
+          <img src="assets/case2-nachher.jpg" alt="Verbundpflaster nach der Reinigung: kräftige Steinfarben, saubere Fugen" loading="lazy">
+          <span class="flag after">Nachher</span>
+        </figure>
+      </div>
+      <p class="case-caption"><strong>Verbundpflaster</strong> Schmutz, Moos, Algen und hartnäckige Ablagerungen entfernt – die kräftigen Steinfarben kommen zurück.</p>
+    </div>
+
+    <div class="case wide reveal">
+      <figure>
+        <img src="assets/case3-nachher.jpg" alt="Frisch gereinigte Pflasterfläche mit Flächenreiniger im Hintergrund" loading="lazy">
+        <span class="flag after">Direkt nach der Reinigung</span>
+      </figure>
+      <p class="case-caption"><strong>Flächenreinigung im Einsatz</strong> Gearbeitet wird mit professioneller Technik – gleichmäßig, gründlich und ohne Streifen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Reinigungs-Animation ============ -->
+<section class="section clean-demo" id="reinigung">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">Live-Demo</span>
+        <h2>So sauber wird Ihr Pflaster</h2>
+      </div>
+      <p class="side-note">Echte Fläche, echter Flächenreiniger – scrollen Sie und sehen Sie zu, wie der Schmutz verschwindet.</p>
+    </div>
+
+    <div class="demo-scroll" id="demoScroll">
+      <div class="demo-sticky">
+        <div class="demo-layout">
+          <div class="demo-stage" id="demoStage">
+            <img class="demo-base" id="demoClean" src="assets/demo-clean.jpg" width="675" height="960"
+                 alt="Pflasterfläche nach der Tiefenreinigung – kräftige Steinfarben, saubere Fugen" loading="lazy">
+            <canvas id="dirtLayer"></canvas>
+            <canvas id="fxLayer"></canvas>
+            <span class="demo-flag" id="demoFlag"><span class="dot"></span><span id="demoFlagText">Verschmutzt</span></span>
+            <div class="demo-meter">
+              <span>Gereinigt</span>
+              <span class="bar"><i id="demoBarFill"></i></span>
+              <span class="pct" id="demoPct">0&nbsp;%</span>
+            </div>
+          </div>
+
+          <ol class="demo-steps" id="demoSteps">
+            <li class="is-active">
+              <span class="step">01</span>
+              <div>
+                <h3>Vorbehandeln</h3>
+                <p>Profi-Reiniger aus dem Fachmarkt kommt auf die Fläche und löst Moos, Algen und Grünbelag an.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step">02</span>
+              <div>
+                <h3>Tiefenreinigung</h3>
+                <p>Der Flächenreiniger fährt Bahn für Bahn über das Pflaster – gleichmäßig, ohne Streifen, bis in die Fugen.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step">03</span>
+              <div>
+                <h3>Verfugen &amp; schützen</h3>
+                <p>Auf Wunsch neuer Quarzsand in die Fugen und eine Imprägnierung als Langzeitschutz.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <p class="demo-hint" id="demoHint">
+          <svg class="ico"><use href="#i-arrows"/></svg>
+          <span id="demoHintText">Weiterscrollen – der Flächenreiniger arbeitet sich Bahn für Bahn vor.</span>
+        </p>
+      </div>
+
+      <div class="demo-static">
+        <figure>
+          <img src="assets/demo-dirty.jpg" alt="Pflasterfläche vor der Reinigung: grauer Schmutzfilm, Moos und Grünbelag in den Fugen" loading="lazy">
+          <span class="flag">Vorher</span>
+        </figure>
+        <figure>
+          <img src="assets/demo-clean.jpg" alt="Dieselbe Pflasterfläche nach der Tiefenreinigung: kräftige Steinfarben, saubere Fugen" loading="lazy">
+          <span class="flag after">Nachher</span>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Preise ============ -->
+<section class="section pricing on-dark" id="preise">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">Preise</span>
+        <h2>Klare Preise.<br>Keine Überraschungen.</h2>
+      </div>
+      <p class="side-note lead">Alle Preise sind Ab&#8209;Preise. Das verbindliche Angebot gibt es nach der kostenlosen Besichtigung vor Ort.</p>
+    </div>
+
+    <div class="promo-banner reveal" role="note">
+      <svg class="promo-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 8h.01M16 16h.01M8.5 15.5l7-7M4.8 8.2 8.2 4.8a2 2 0 0 1 1.4-.6h.9a2 2 0 0 0 1.4-.6l.7-.6a2 2 0 0 1 2.8 0l.6.7a2 2 0 0 0 1.4.6h.9a2 2 0 0 1 1.4.6l.001.001a2 2 0 0 1 .6 1.4v.9a2 2 0 0 0 .6 1.4l.6.7a2 2 0 0 1 0 2.8l-.6.7a2 2 0 0 0-.6 1.4v.9a2 2 0 0 1-2 2h-.9a2 2 0 0 0-1.4.6l-.7.6a2 2 0 0 1-2.8 0l-.7-.6a2 2 0 0 0-1.4-.6h-.9a2 2 0 0 1-2-2v-.9a2 2 0 0 0-.6-1.4l-.6-.7a2 2 0 0 1 0-2.8z"/></svg>
+      <span class="promo-text">Bis zu <b>50&nbsp;% Neukundenrabatt</b></span>
+      <span class="promo-sub">Nur für Neukunden</span>
+    </div>
+
+    <div class="tiers">
+      <article class="tier reveal">
+        <h3>Basis&#8209;Reinigung</h3>
+        <p class="price">ab 3 €<small>/ m²</small></p>
+        <ul>
+          <li><svg class="ico"><use href="#i-check"/></svg>Hochdruckreinigung mit einfachem Haushaltsreiniger</li>
+          <li><svg class="ico"><use href="#i-check"/></svg>Entfernt oberflächlichen Schmutz</li>
+        </ul>
+        <p class="tier-note">Für leicht verschmutzte Flächen, die schnell wieder ordentlich aussehen sollen.</p>
+      </article>
+
+      <article class="tier featured reveal">
+        <span class="badge">Empfohlen</span>
+        <h3>Standard&#8209;Reinigung</h3>
+        <p class="price">ab 5–8 €<small>/ m²</small></p>
+        <ul>
+          <li><svg class="ico"><use href="#i-check"/></svg>Tiefenreinigung mit Vorbehandlung</li>
+          <li><svg class="ico"><use href="#i-check"/></svg>Professioneller Reiniger aus dem Fachmarkt</li>
+          <li><svg class="ico"><use href="#i-check"/></svg>Unkrautentfernung inklusive</li>
+        </ul>
+        <p class="tier-note">Unsere Empfehlung: gründliches Ergebnis, das sichtbar länger hält.</p>
+      </article>
+
+      <article class="tier reveal">
+        <h3>Premium&#8209;Reinigung</h3>
+        <p class="price">ab 10–14 €<small>/ m²</small></p>
+        <ul>
+          <li><svg class="ico"><use href="#i-check"/></svg>Intensive Reinigung mit Vor- und Nachbehandlung</li>
+          <li><svg class="ico"><use href="#i-check"/></svg>Fugen neu verfüllt mit Quarzsand</li>
+          <li><svg class="ico"><use href="#i-check"/></svg>Schutz &amp; Imprägnierung</li>
+        </ul>
+        <p class="tier-note">Das Komplettpaket – wie neu verlegt, inklusive Langzeitschutz.</p>
+      </article>
+    </div>
+
+    <div class="board reveal">
+      <div>
+        <h3>Heckenschnitt</h3>
+        <p class="sub">Formschnitt inklusive Entsorgung vom Schnittgut.</p>
+        <div class="price-row">
+          <span class="label"><b>Kleine Hecke</b><small>bis 1,50 m Höhe</small></span>
+          <span class="dots"></span>
+          <span class="val">5 € / m</span>
+        </div>
+        <div class="price-row">
+          <span class="label"><b>Mittlere Hecke</b><small>bis 2,50 m Höhe</small></span>
+          <span class="dots"></span>
+          <span class="val">9 € / m</span>
+        </div>
+        <div class="price-row">
+          <span class="label"><b>Schwierige Hecke</b><small>dicke Verästelungen</small></span>
+          <span class="dots"></span>
+          <span class="val">14 € / m</span>
+        </div>
+      </div>
+      <div>
+        <h3>Gut zu wissen</h3>
+        <p class="sub">Transparente Zusatzkosten – ohne Kleingedrucktes.</p>
+        <ul class="extra-list">
+          <li><svg class="ico"><use href="#i-car"/></svg><span><b>Anfahrt:</b> ab 0,50 Euro pro Kilometer</span></li>
+          <li><svg class="ico"><use href="#i-bin"/></svg><span><b>Entsorgung von Grünabfällen:</b> nach Aufwand</span></li>
+          <li><svg class="ico"><use href="#i-clipboard"/></svg><span><b>Alle Reinigungsarten</b> auf Anfrage – mit Besichtigung und persönlicher Beratung</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="pricing-foot reveal">
+      <svg class="ico"><use href="#i-euro"/></svg>
+      Endpreis hängt von Fläche und Verschmutzung ab – deshalb schauen wir kostenlos vorbei, bevor wir ein Angebot machen.
+      <a class="btn btn-lime" href="#kontakt">Besichtigung anfragen</a>
+    </p>
+  </div>
+</section>
+
+<!-- ============ Warum ONF + Team ============ -->
+<section class="section" id="warum">
+  <div class="wrap why-grid">
+    <div>
+      <div class="section-head reveal" style="margin-bottom:30px">
+        <div>
+          <span class="eyebrow">Warum ONF Tiefenrein?</span>
+          <h2>Was wir anders machen</h2>
+        </div>
+      </div>
+      <div class="claims">
+        <div class="claim reveal">
+          <h3>Wir schauen es uns erst an</h3>
+          <p>Kostenlose Besichtigung und ehrliche Beratung vor Ort – bevor irgendetwas berechnet wird.</p>
+        </div>
+        <div class="claim reveal">
+          <h3>Kein Baumarkt-Standard</h3>
+          <p>Wir arbeiten mit professionellen Reinigern aus dem Fachmarkt – für Ergebnisse, die halten.</p>
+        </div>
+        <div class="claim reveal">
+          <h3>Gründlich statt schnell-schnell</h3>
+          <p>Saubere Arbeit bis in die Fugen – inklusive Ecken, Kanten und Aufräumen danach.</p>
+        </div>
+        <div class="claim reveal">
+          <h3>Faire Preise</h3>
+          <p>Transparente Ab&#8209;Preise und ein festes Angebot nach der Besichtigung. Ohne Überraschungen.</p>
+        </div>
+      </div>
+    </div>
+    <figure class="collage reveal">
+      <div class="photo-main">
+        <img src="assets/team-heckenschnitt.jpg" alt="ONF-Mitarbeiter mit Akku-Heckenschere beim Heckenschnitt" loading="lazy">
+      </div>
+      <div class="photo-small">
+        <img src="assets/team-rodung.jpg" alt="ONF im Einsatz: Gartenfläche wird gerodet und Grünabfall entfernt" loading="lazy">
+      </div>
+      <figcaption>Das ONF&#8209;Team im Einsatz – vom Heckenschnitt bis zur Gartenräumung.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ Kontakt ============ -->
+<section class="section" id="kontakt" style="padding-top:0">
+  <div class="wrap">
+    <div class="contact-panel on-dark reveal">
+      <span class="eyebrow">Kontakt</span>
+      <h2>Kostenlose Besichtigung sichern</h2>
+      <p class="lead">Kurz anrufen oder eine E&#8209;Mail schreiben – wir melden uns zeitnah, kommen vorbei und beraten Sie unverbindlich.</p>
+      <a class="phone-xl" href="tel:+4915205845274">01520&#8202;5845274</a>
+      <p class="contact-meta">Ihr Ansprechpartner: <strong>Oskar Wennrich</strong> · <a href="mailto:onf.tiefenrein@gmail.com">onf.tiefenrein@gmail.com</a> · <a href="https://www.instagram.com/onf.tiefenrein/" target="_blank" rel="noopener">@onf.tiefenrein</a></p>
+      <div class="contact-ctas">
+        <a class="btn btn-lime" href="tel:+4915205845274"><svg class="ico"><use href="#i-phone"/></svg>Jetzt anrufen</a>
+        <a class="btn btn-ghost" href="mailto:onf.tiefenrein@gmail.com?subject=Anfrage%3A%20Kostenlose%20Besichtigung"><svg class="ico"><use href="#i-mail"/></svg>E-Mail schreiben</a>
+        <a class="btn btn-review" href="https://share.google/1nKlZH3VyOjZe6kZB" target="_blank" rel="noopener">
+          <svg class="ico"><use href="#i-star"/></svg>Jetzt bewerten
+        </a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/onf.tiefenrein/" target="_blank" rel="noopener">
+          <svg class="ico"><use href="#i-instagram"/></svg>Instagram
+        </a>
+        <a class="btn btn-ghost" href="https://www.tiktok.com/@onf.tiefenrein?_r=1&amp;_t=ZG-97tPhiyUOLQ" target="_blank" rel="noopener">
+          <svg class="ico"><use href="#i-tiktok"/></svg>TikTok
+        </a>
+      </div>
+      <p class="review-note">Zufrieden mit unserer Arbeit? Über eine Google‑Bewertung freuen wir uns sehr.</p>
+    </div>
+  </div>
+</section>
+</div>
+<div id="view-about" hidden>
+  <section class="page-hero on-dark">
+    <div class="wrap">
+      <nav class="breadcrumb" aria-label="Brotkrumen">
+        <a href="#top">Start</a><span>/</span>Über uns
+      </nav>
+      <span class="eyebrow">Das Team hinter ONF</span>
+      <h1>Über uns</h1>
+      <p class="lead">Drei junge Männer aus Stendal mit einem klaren Anspruch: zuverlässige Arbeit zu fairen Preisen – und mit echter Leidenschaft für saubere Ergebnisse.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap about-grid">
+      <figure class="about-photo reveal">
+        <img src="assets/team-gruender.jpg" alt="Das Gründerteam von ONF Tiefenrein aus Stendal" loading="lazy">
+        <figcaption>Das ONF&#8209;Team in Stendal</figcaption>
+      </figure>
+      <div class="about-copy reveal">
+        <span class="eyebrow">Wer wir sind</span>
+        <h2 class="about-h2"><span>Aus Stendal</span><span>Mit Anpacker-Mentalität</span></h2>
+        <p>Wir sind drei junge Männer aus Stendal und haben ONF Tiefenrein mit einem klaren Ziel gegründet: zuverlässige Dienstleistungen zu fairen Preisen und mit echter Leidenschaft anzubieten.</p>
+        <p><span class="kicker">Sauberkeit, Pünktlichkeit und ein freundlicher Umgang</span> mit unseren Kunden stehen für uns an erster Stelle. Ob Hofreinigung, Grünschnitt, Entrümpelung oder andere Arbeiten rund ums Grundstück – wir packen mit an und erledigen jeden Auftrag gewissenhaft.</p>
+        <div class="founder-tags">
+          <span><svg class="ico"><use href="#i-check"/></svg>Aus Stendal</span>
+          <span><svg class="ico"><use href="#i-check"/></svg>Professionell</span>
+          <span><svg class="ico"><use href="#i-check"/></svg>Mit Leidenschaft</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="aktion-panel reveal">
+        <svg class="leaf-deco ld-1" viewBox="0 0 170 170" aria-hidden="true">
+          <path d="M86 162C82 120 68 86 40 60M86 162c6-46 22-78 50-98" stroke="#1E7A4C" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <path d="M40 60C15 46 7 26 10 9c18 0 35 13 30 51z" fill="#2E7D4F"/>
+          <path d="M136 64c25-16 32-36 28-52-17 2-33 16-28 52z" fill="#5CA45C"/>
+          <path d="M86 104C65 92 57 72 60 54c17 2 31 18 26 50z" fill="#8FCB6B"/>
+          <circle cx="118" cy="124" r="5" fill="#C9F16A"/>
+          <circle cx="54" cy="126" r="4" fill="#C9F16A"/>
+        </svg>
+        <svg class="leaf-deco ld-2" viewBox="0 0 170 170" aria-hidden="true">
+          <path d="M86 162C82 120 68 86 40 60M86 162c6-46 22-78 50-98" stroke="#1E7A4C" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <path d="M40 60C15 46 7 26 10 9c18 0 35 13 30 51z" fill="#2E7D4F"/>
+          <path d="M136 64c25-16 32-36 28-52-17 2-33 16-28 52z" fill="#5CA45C"/>
+          <path d="M86 104C65 92 57 72 60 54c17 2 31 18 26 50z" fill="#8FCB6B"/>
+          <circle cx="118" cy="124" r="5" fill="#C9F16A"/>
+        </svg>
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Einblick</span>
+            <h2>Wir in Aktion</h2>
+          </div>
+          <p class="side-note">Echte Einsätze statt Stockfotos – schauen Sie uns über die Schulter.</p>
+        </div>
+        <div class="aktion-grid">
+          <figure class="aktion-tile">
+            <video controls playsinline preload="none" poster="assets/poster-video1.jpg" width="720" height="1280">
+              <source src="onf-video.mp4" type="video/mp4">
+            </video>
+            <figcaption class="aktion-chip">Im Einsatz</figcaption>
+          </figure>
+          <figure class="aktion-tile">
+            <video controls playsinline preload="none" poster="assets/poster-video2.jpg" width="480" height="854">
+              <source src="onf-video-2.mp4" type="video/mp4">
+            </video>
+            <figcaption class="aktion-chip">Am Werk</figcaption>
+          </figure>
+          <figure class="aktion-tile">
+            <img src="assets/aktion-flaechenreinigung.jpg" alt="Zwei ONF-Mitarbeiter mit Flächenreiniger auf frisch gereinigtem Pflaster" loading="lazy">
+            <figcaption class="aktion-chip">Flächenreinigung</figcaption>
+          </figure>
+          <figure class="aktion-tile">
+            <video controls playsinline preload="none" poster="assets/poster-video3.jpg" width="480" height="854">
+              <source src="onf-video-3.mp4" type="video/mp4">
+            </video>
+            <figcaption class="aktion-chip">Volle Power</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Wofür wir stehen</span>
+          <h2>Unsere Werte</h2>
+        </div>
+        <p class="side-note">Als junges Unternehmen legen wir großen Wert auf das, was zählt.</p>
+      </div>
+      <div class="values">
+        <article class="value-card reveal">
+          <span class="icon-box"><svg class="ico"><use href="#i-spray"/></svg></span>
+          <h3>Qualität</h3>
+          <p>Jeder Auftrag wird gewissenhaft und gründlich erledigt – bis das Ergebnis wirklich sauber ist.</p>
+        </article>
+        <article class="value-card reveal">
+          <span class="icon-box"><svg class="ico"><use href="#i-clipboard"/></svg></span>
+          <h3>Ehrlichkeit</h3>
+          <p>Faire Preise und klare Absprachen – von der ersten Kontaktaufnahme bis zum abgeschlossenen Auftrag.</p>
+        </article>
+        <article class="value-card reveal">
+          <span class="icon-box"><svg class="ico"><use href="#i-check"/></svg></span>
+          <h3>Zuverlässigkeit</h3>
+          <p>Pünktlich, verbindlich und ansprechbar. Auf uns können Sie sich verlassen.</p>
+        </article>
+      </div>
+      <p class="pledge reveal">Unser Ziel ist es nicht nur, einen einzelnen Auftrag zu erledigen, sondern langfristige Beziehungen zu unseren Kunden aufzubauen. Wir freuen uns, wenn aus einem ersten Auftrag eine dauerhafte Zusammenarbeit entsteht – und wir regelmäßig für Sie im Einsatz sein dürfen.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="about-cta reveal">
+        <span class="eyebrow">Kontakt</span>
+        <h2>Überzeugen Sie sich selbst</h2>
+        <p class="lead">Wir möchten, dass Sie sich auf uns verlassen können – von der ersten Kontaktaufnahme bis zum abgeschlossenen Auftrag. Wir freuen uns darauf, auch Sie von unserer Arbeit zu überzeugen!</p>
+        <div class="btn-row">
+          <a class="btn btn-lime" href="tel:+4915205845274"><svg class="ico"><use href="#i-phone"/></svg>01520 5845274</a>
+          <a class="btn btn-ghost" href="#kontakt"><svg class="ico"><use href="#i-mail"/></svg>Zum Kontakt</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+
+<!-- ============ Fußzeile ============ -->
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span><strong>ONF Tiefenrein</strong> – Pflasterreinigung &amp; Gartenpflege</span>
+    <span>
+      <a href="tel:+4915205845274">01520 5845274</a> &nbsp;·&nbsp;
+      <a href="mailto:onf.tiefenrein@gmail.com">onf.tiefenrein@gmail.com</a>
+    </span>
+    <span>
+      <a href="#ueber-uns">Über uns</a> &nbsp;·&nbsp;
+      <a href="https://www.instagram.com/onf.tiefenrein/" target="_blank" rel="noopener">Instagram</a> &nbsp;·&nbsp;
+      <a href="https://www.tiktok.com/@onf.tiefenrein?_r=1&amp;_t=ZG-97tPhiyUOLQ" target="_blank" rel="noopener">TikTok</a> &nbsp;·&nbsp;
+      <a href="https://share.google/1nKlZH3VyOjZe6kZB" target="_blank" rel="noopener">Bewerten</a>
+    </span>
+    <span>© <span id="year">2026</span> ONF Tiefenrein</span>
+    <span class="footer-tag">Sauber. Frisch. Wie neu.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  // Vorher/Nachher-Regler
+  var compare = document.getElementById('compare');
+  if(compare){
+    var range = compare.querySelector('input[type=range]');
+    var setSplit = function(v){ compare.style.setProperty('--split', v + '%'); };
+    setSplit(range.value);
+    range.addEventListener('input', function(){ setSplit(range.value); });
+    var hint = compare.querySelector('.compare-hint');
+    var hideHint = function(){ if(hint){ hint.style.opacity = 0; hint.style.transition = 'opacity .4s'; } };
+    range.addEventListener('input', hideHint, {once:true});
+    setTimeout(hideHint, 6000);
+  }
+
+  // Mobile Navigation
+  var header = document.querySelector('.site-header');
+  var toggle = document.querySelector('.nav-toggle');
+  if(toggle){
+    toggle.addEventListener('click', function(){
+      var open = header.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+      toggle.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+    });
+    document.querySelectorAll('.main-nav a').forEach(function(a){
+      a.addEventListener('click', function(){
+        header.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // Schatten beim Scrollen
+  var onScroll = function(){ header.classList.toggle('scrolled', window.scrollY > 8); };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Sanftes Einblenden beim Scrollen
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.reveal');
+  if(reduced || !('IntersectionObserver' in window)){
+    items.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+    items.forEach(function(el, i){
+      el.style.transitionDelay = (i % 4) * 70 + 'ms';
+      io.observe(el);
+    });
+  }
+
+  // Videokacheln: fehlt die Datei, zeigt die Kachel das Standbild statt eines toten Players
+  document.querySelectorAll('.aktion-tile video').forEach(function(v){
+    var src = v.querySelector('source');
+    if(!src || !src.getAttribute('src')) return;
+    var swap = function(){
+      if(v.dataset.fallback) return;
+      v.dataset.fallback = '1';
+      var img = document.createElement('img');
+      img.src = v.getAttribute('poster') || '';
+      img.loading = 'lazy';
+      var cap = v.parentNode && v.parentNode.querySelector('figcaption');
+      img.alt = cap ? 'ONF Tiefenrein im Einsatz – ' + cap.textContent.trim() : 'ONF Tiefenrein im Einsatz';
+      v.replaceWith(img);
+    };
+    fetch(src.src, {method:'HEAD'})
+      .then(function(r){ if(!r.ok) swap(); })
+      .catch(swap);
+  });
+
+  // Jahr im Footer
+  var y = document.getElementById('year');
+  if(y){ y.textContent = new Date().getFullYear(); }
+  // Ein-Seiten-Navigation: "Über uns" als eingebettete Ansicht (kein Dateiwechsel nötig)
+  var viewHome = document.getElementById('view-home');
+  var viewAbout = document.getElementById('view-about');
+  var navAbout = document.querySelector('.main-nav a[href="#ueber-uns"]');
+  var baseTitle = document.title;
+  function route(){
+    if(!viewHome || !viewAbout) return;
+    var h = location.hash;
+    var about = (h === '#ueber-uns');
+    viewHome.hidden = about;
+    viewAbout.hidden = !about;
+    if(navAbout){
+      if(about){ navAbout.setAttribute('aria-current','page'); }
+      else { navAbout.removeAttribute('aria-current'); }
+    }
+    document.title = about ? 'Über uns – ONF Tiefenrein | Drei junge Männer aus Stendal' : baseTitle;
+    if(about){
+      window.scrollTo(0,0);
+    } else if(h && h.length > 1){
+      var t = document.querySelector(h);
+      if(t){ t.scrollIntoView(); }
+    }
+  }
+  window.addEventListener('hashchange', route);
+  route();
+})();
+</script>
+<script>
+/* ====== Scrollgesteuerte Reinigungs-Animation (echtes Foto) ====== */
+(function(){
+  "use strict";
+  var scrollEl = document.getElementById('demoScroll');
+  var stage    = document.getElementById('demoStage');
+  var dirtCv   = document.getElementById('dirtLayer');
+  var fxCv     = document.getElementById('fxLayer');
+  if(!scrollEl || !stage || !dirtCv || !fxCv || !window.requestAnimationFrame) return;
+
+  var stickyEl = scrollEl.querySelector('.demo-sticky');
+  var flagTx   = document.getElementById('demoFlagText');
+  var barFil   = document.getElementById('demoBarFill');
+  var pctEl    = document.getElementById('demoPct');
+  var hintEl   = document.getElementById('demoHint');
+  var hintTx   = document.getElementById('demoHintText');
+  var stepEls  = document.querySelectorAll('#demoSteps li');
+
+  var dctx = dirtCv.getContext('2d');
+  var fctx = fxCv.getContext('2d');
+  if(!dctx || !fctx) return;
+
+  // Ohne Bewegung: statische Vorher/Nachher-Ansicht
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    scrollEl.classList.add('no-scrub');
+    return;
+  }
+
+  var IW = 675, IH = 960;            // Bildkoordinaten
+  var STICKY_TOP = 96;
+  var SPR_W = 244, SPR_H = 134;      // Sprite des Flächenreinigers
+  var PATH_END = 0.93;               // danach: Restschleier ausblenden
+
+  function clamp(v,a,b){ return v<a?a:(v>b?b:v); }
+  function smoothstep(t){ t = clamp(t,0,1); return t*t*(3-2*t); }
+
+  /* ---- Kante Pflaster / Kies (Bildkoordinaten) ---- */
+  var EDGE = [[0,34],[150,26],[290,20],[360,80],[430,155],[500,235],[560,305],[620,380],[675,455]];
+  function rightLimit(y){
+    if(y >= 455) return IW;
+    if(y <= 20)  return 290;
+    for(var i = 2; i < EDGE.length - 1; i++){
+      var a = EDGE[i], b = EDGE[i+1];
+      if(y >= a[1] && y <= b[1]){
+        var f = (y - a[1]) / Math.max(1e-6, b[1] - a[1]);
+        return a[0] + (b[0] - a[0]) * f;
+      }
+    }
+    return IW;
+  }
+  function scaleAt(y){ return clamp(0.618 + 0.001335 * y, 0.55, 2.0); }
+
+  /* ---- Reinigungsbahnen von vorn nach hinten ---- */
+  var passes = [], totalLen = 0;
+  (function buildPasses(){
+    var y = 944, dir = 1;
+    while(y > 96){
+      var s = scaleAt(y), rx = 108 * s, ry = 56 * s;
+      var xR = rightLimit(y);
+      var a = dir > 0 ? -rx * 0.45 : xR + rx * 0.45;
+      var b = dir > 0 ? xR + rx * 0.45 : -rx * 0.45;
+      var len = Math.abs(b - a);
+      passes.push({y:y, a:a, b:b, rx:rx, ry:ry, s:s, len:len});
+      totalLen += len;
+      y -= ry * 1.7;
+      dir *= -1;
+    }
+  })();
+
+  function posAt(pathP){
+    var d = pathP * totalLen;
+    for(var i = 0; i < passes.length; i++){
+      var p = passes[i];
+      if(d <= p.len || i === passes.length - 1){
+        var f = clamp(d / Math.max(1e-6, p.len), 0, 1);
+        return {x: p.a + (p.b - p.a) * f, y: p.y, s: p.s, i: i, f: f,
+                dir: p.b > p.a ? 1 : -1, rx: p.rx, ry: p.ry};
+      }
+      d -= p.len;
+    }
+    var q = passes[0];
+    return {x: q.a, y: q.y, s: q.s, i: 0, f: 0, dir: 1, rx: q.rx, ry: q.ry};
+  }
+
+  /* ---- Maske (klein gerendert, beim Hochskalieren weiche Kante) ---- */
+  var MS = 0.3;
+  var maskCv = document.createElement('canvas');
+  maskCv.width  = Math.round(IW * MS);
+  maskCv.height = Math.round(IH * MS);
+  var mctx = maskCv.getContext('2d');
+
+  function drawMask(pathP, finish){
+    mctx.setTransform(MS, 0, 0, MS, 0, 0);
+    mctx.clearRect(0, 0, IW, IH);
+    mctx.fillStyle = '#fff';
+    var d = pathP * totalLen;
+    for(var i = 0; i < passes.length && d > 0; i++){
+      var p = passes[i];
+      var seg = Math.min(d, p.len);
+      var sign = p.b > p.a ? 1 : -1;
+      var cur = p.a + sign * seg;
+      var x0 = Math.min(p.a, cur), x1 = Math.max(p.a, cur);
+      if(seg >= p.len){ x0 -= p.rx; x1 += p.rx; }
+      else if(sign > 0){ x0 -= p.rx; }
+      else { x1 += p.rx; }
+      mctx.fillRect(x0, p.y - p.ry, x1 - x0, p.ry * 2);
+      if(seg < p.len){                       // runde Vorderkante des Tellers
+        mctx.beginPath();
+        mctx.ellipse(cur, p.y, p.rx, p.ry, 0, 0, 6.2832);
+        mctx.fill();
+      }
+      d -= p.len;
+    }
+    if(finish > 0){
+      mctx.globalAlpha = finish;
+      mctx.fillRect(0, 0, IW, IH);
+      mctx.globalAlpha = 1;
+    }
+  }
+
+  /* ---- Canvas-Maßstab ---- */
+  var dpr = 1, sx = 1, sy = 1, ready = false;
+  function sizeCanvases(){
+    var w = stage.clientWidth, h = stage.clientHeight;
+    if(!w || !h) return false;
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    sx = w / IW; sy = h / IH;
+    [dirtCv, fxCv].forEach(function(cv){
+      cv.width  = Math.round(w * dpr);
+      cv.height = Math.round(h * dpr);
+    });
+    return true;
+  }
+  function setT(ctx){ ctx.setTransform(dpr*sx, 0, 0, dpr*sy, 0, 0); }
+
+  /* ---- Bilder laden ---- */
+  var dirtyImg = new Image(), cleanerImg = new Image(), loaded = 0;
+  function onLoad(){
+    if(++loaded < 2) return;
+    ready = sizeCanvases();
+    render(0, true);
+    tick();
+  }
+  dirtyImg.onload = onLoad; cleanerImg.onload = onLoad;
+  dirtyImg.onerror = onLoad; cleanerImg.onerror = onLoad;
+  dirtyImg.src = 'assets/demo-dirty.jpg';
+  cleanerImg.src = 'assets/demo-cleaner.png';
+
+  /* ---- Wassertropfen ---- */
+  var drops = [];
+  function updateDrops(x, y, s, active){
+    if(active){
+      for(var i = 0; i < 4; i++){
+        var a = Math.random() * 6.2832;
+        drops.push({
+          x: x + Math.cos(a) * 46 * s, y: y + Math.sin(a) * 18 * s,
+          vx: Math.cos(a) * (1.6 + Math.random()*3.6) * s,
+          vy: (-1.4 - Math.random()*3.2) * s,
+          r: (1.1 + Math.random()*2.6) * s, life: 1
+        });
+      }
+    }
+    for(var j = drops.length - 1; j >= 0; j--){
+      var d = drops[j];
+      d.x += d.vx; d.y += d.vy; d.vy += 0.34 * s; d.life -= 0.042;
+      if(d.life <= 0) drops.splice(j, 1);
+    }
+    if(drops.length > 220) drops.splice(0, drops.length - 220);
+  }
+
+  function drawFx(pos, P){
+    setT(fctx);
+    fctx.clearRect(0, 0, IW, IH);
+    var active = P > 0.002 && P < PATH_END + 0.02;
+    if(!active && P >= 0.5){ drops.length = 0; return; }
+    var x = pos.x, y = pos.y, s = pos.s;
+    updateDrops(x, y, s, active);
+    if(!active) return;
+
+    // Kontaktschatten – setzt den Teller auf die Fläche
+    fctx.save(); fctx.translate(x, y + 16*s); fctx.scale(1, 0.32);
+    var csh = fctx.createRadialGradient(0, 0, 12*s, 0, 0, 128*s);
+    csh.addColorStop(0, 'rgba(18,26,20,0.46)');
+    csh.addColorStop(1, 'rgba(18,26,20,0)');
+    fctx.fillStyle = csh;
+    fctx.beginPath(); fctx.arc(0, 0, 128*s, 0, 6.2832); fctx.fill();
+    fctx.restore();
+
+    // Nasser Glanz auf der frisch gereinigten Spur
+    fctx.save(); fctx.translate(x - pos.dir * 90*s, y); fctx.scale(1, 0.42);
+    var wet = fctx.createRadialGradient(0, 0, 8*s, 0, 0, 170*s);
+    wet.addColorStop(0, 'rgba(140,180,205,0.30)');
+    wet.addColorStop(1, 'rgba(140,180,205,0)');
+    fctx.fillStyle = wet;
+    fctx.beginPath(); fctx.arc(0, 0, 170*s, 0, 6.2832); fctx.fill();
+    fctx.restore();
+
+    // Sprühnebel unter dem Teller
+    fctx.save(); fctx.translate(x, y); fctx.scale(1, 0.5);
+    var mist = fctx.createRadialGradient(0, 0, 10*s, 0, 0, 168*s);
+    mist.addColorStop(0,   'rgba(255,255,255,0.62)');
+    mist.addColorStop(0.42,'rgba(232,244,252,0.32)');
+    mist.addColorStop(1,   'rgba(232,244,252,0)');
+    fctx.fillStyle = mist;
+    fctx.beginPath(); fctx.arc(0, 0, 168*s, 0, 6.2832); fctx.fill();
+    fctx.restore();
+
+    // Spritzfächer an der Vorderkante
+    fctx.save();
+    fctx.translate(x + pos.dir * pos.rx * 0.72, y + 6*s);
+    fctx.scale(pos.dir, 0.46);
+    var fan = fctx.createLinearGradient(0, 0, 88*s, 0);
+    fan.addColorStop(0, 'rgba(255,255,255,0.55)');
+    fan.addColorStop(1, 'rgba(255,255,255,0)');
+    fctx.fillStyle = fan;
+    fctx.beginPath();
+    fctx.moveTo(0, 0);
+    fctx.arc(0, 0, 92*s, -0.85, 0.85);
+    fctx.closePath(); fctx.fill();
+    fctx.restore();
+
+    // Tropfen
+    for(var i = 0; i < drops.length; i++){
+      var d = drops[i];
+      fctx.fillStyle = 'rgba(244,252,255,' + (d.life*0.9).toFixed(3) + ')';
+      fctx.beginPath(); fctx.arc(d.x, d.y, d.r, 0, 6.2832); fctx.fill();
+    }
+
+    // Kurzer Schlauchstummel, der ausblendet
+    var hg = fctx.createLinearGradient(x, y - 20*s, x - 150*s, y - 96*s);
+    hg.addColorStop(0, 'rgba(26,32,28,0.72)');
+    hg.addColorStop(1, 'rgba(26,32,28,0)');
+    fctx.strokeStyle = hg; fctx.lineWidth = 8*s; fctx.lineCap = 'round';
+    fctx.beginPath();
+    fctx.moveTo(x - 12*s, y - 24*s);
+    fctx.quadraticCurveTo(x - 82*s, y - 40*s, x - 150*s, y - 96*s);
+    fctx.stroke();
+
+    // Flächenreiniger
+    if(cleanerImg.complete && cleanerImg.naturalWidth){
+      var w = SPR_W*s, h = SPR_H*s;
+      fctx.drawImage(cleanerImg, x - w/2, y - h/2, w, h);
+    }
+  }
+
+  /* ---- Rendern ---- */
+  var shownP = 0, lastDrawn = -1;
+  function render(P, force){
+    if(!ready) return;
+    var pathP = clamp(P / PATH_END, 0, 1);
+    var finish = smoothstep((P - PATH_END) / (1 - PATH_END));
+
+    if(force || Math.abs(P - lastDrawn) > 0.0004){
+      drawMask(pathP, finish);
+      setT(dctx);
+      dctx.globalCompositeOperation = 'source-over';
+      dctx.clearRect(0, 0, IW, IH);
+      if(dirtyImg.complete && dirtyImg.naturalWidth) dctx.drawImage(dirtyImg, 0, 0, IW, IH);
+      dctx.globalCompositeOperation = 'destination-out';
+      dctx.drawImage(maskCv, 0, 0, IW, IH);
+      dctx.globalCompositeOperation = 'source-over';
+      lastDrawn = P;
+    }
+    drawFx(posAt(pathP), P);
+
+    var pct = Math.round(P * 100);
+    if(barFil) barFil.style.width = pct + '%';
+    if(pctEl)  pctEl.innerHTML = pct + '&nbsp;%';
+    if(flagTx) flagTx.textContent = P < 0.02 ? 'Verschmutzt' : (P > 0.985 ? 'Gereinigt' : 'Wird gereinigt …');
+    stage.classList.toggle('is-clean', P > 0.985);
+    if(hintTx) hintTx.textContent = P > 0.985
+      ? 'Fertig – kräftige Steinfarben, saubere Fugen.'
+      : 'Weiterscrollen – der Flächenreiniger arbeitet sich Bahn für Bahn vor.';
+    if(hintEl) hintEl.classList.toggle('is-done', P > 0.985);
+
+    var idx = P < 0.12 ? 0 : (P < 0.86 ? 1 : 2);
+    for(var i = 0; i < stepEls.length; i++) stepEls[i].classList.toggle('is-active', i === idx);
+  }
+
+  /* ---- Scroll-Fortschritt ---- */
+  function targetP(){
+    var r = scrollEl.getBoundingClientRect();
+    var travel = scrollEl.offsetHeight - stickyEl.offsetHeight;
+    if(travel <= 0) return r.top < STICKY_TOP ? 1 : 0;
+    return clamp((STICKY_TOP - r.top) / travel, 0, 1);
+  }
+
+  var inView = false;
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){ inView = e.isIntersecting; if(inView) tick(); });
+    }, {rootMargin: '120px 0px'}).observe(scrollEl);
+  } else { inView = true; }
+
+  var running = false;
+  function tick(){
+    if(running || !ready) return;
+    running = true;
+    (function loop(){
+      var t = targetP();
+      shownP += (t - shownP) * 0.22;
+      if(Math.abs(t - shownP) < 0.0008) shownP = t;
+      render(shownP, false);
+      if(inView || Math.abs(t - shownP) > 0.001){ requestAnimationFrame(loop); }
+      else { running = false; }
+    })();
+  }
+  window.addEventListener('scroll', tick, {passive:true});
+
+  var rt;
+  window.addEventListener('resize', function(){
+    clearTimeout(rt);
+    rt = setTimeout(function(){
+      ready = sizeCanvases();
+      lastDrawn = -1;
+      render(shownP, true);
+    }, 160);
+  }, {passive:true});
+})();
+</script>
+</body>
+</html>
